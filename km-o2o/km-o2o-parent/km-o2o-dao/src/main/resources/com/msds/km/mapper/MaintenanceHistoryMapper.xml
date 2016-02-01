@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.MaintenanceHistoryMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.MaintenanceHistoryEntity">
+		<result column="id" property="id" />
+		<result column="vin" property="vin" />
+		<result column="brand" property="brand" />
+		<result column="model" property="model" />
+		<result column="report_time" property="reportTime" />
+		<result column="producer" property="producer" />
+		<result column="transmission" property="transmission" />
+		<result column="displacement" property="displacement" />
+		<result column="structure" property="structure" />
+		<result column="maintenance_times" property="maintenanceTimes" />
+		<result column="srs" property="srs" />
+		<result column="maintenance_period" property="maintenancePeriod" />
+		<result column="recall_record" property="recallRecord" />
+		<result column="max_range" property="maxRange" />
+		<result column="operator" property="operator" />
+		<result column="create_date" property="createDate" />
+		<result column="modify_date" property="modifyDate" />
+	</resultMap>
+
+	<!-- b_maintenance_history 字段 -->
+	<sql id="Column_List">
+		b_maintenance_history.id,b_maintenance_history.vin,b_maintenance_history.brand,b_maintenance_history.model,b_maintenance_history.report_time,b_maintenance_history.producer,b_maintenance_history.transmission,b_maintenance_history.displacement,b_maintenance_history.structure,b_maintenance_history.maintenance_times,b_maintenance_history.srs,b_maintenance_history.maintenance_period,b_maintenance_history.recall_record,b_maintenance_history.max_range,b_maintenance_history.operator,b_maintenance_history.create_date,b_maintenance_history.modify_date
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_maintenance_history.id = #{id}
+			</if>
+			<if test="vin != null and vin != ''">
+				and b_maintenance_history.vin = #{vin}
+			</if>
+			<if test="brand != null and brand != ''">
+				and b_maintenance_history.brand = #{brand}
+			</if>
+			<if test="model != null and model != ''">
+				and b_maintenance_history.model = #{model}
+			</if>
+			<if test="reportTime != null and reportTime != ''">
+				and b_maintenance_history.report_time = #{reportTime}
+			</if>
+			<if test="producer != null and producer != ''">
+				and b_maintenance_history.producer = #{producer}
+			</if>
+			<if test="transmission != null and transmission != ''">
+				and b_maintenance_history.transmission = #{transmission}
+			</if>
+			<if test="displacement != null and displacement != ''">
+				and b_maintenance_history.displacement = #{displacement}
+			</if>
+			<if test="structure != null and structure != ''">
+				and b_maintenance_history.structure = #{structure}
+			</if>
+			<if test="maintenanceTimes != null and maintenanceTimes != ''">
+				and b_maintenance_history.maintenance_times = #{maintenanceTimes}
+			</if>
+			<if test="srs != null and srs != ''">
+				and b_maintenance_history.srs = #{srs}
+			</if>
+			<if test="maintenancePeriod != null and maintenancePeriod != ''">
+				and b_maintenance_history.maintenance_period = #{maintenancePeriod}
+			</if>
+			<if test="recallRecord != null and recallRecord != ''">
+				and b_maintenance_history.recall_record = #{recallRecord}
+			</if>
+			<if test="maxRange != null and maxRange != ''">
+				and b_maintenance_history.max_range = #{maxRange}
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_maintenance_history.operator = #{operator}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_maintenance_history.create_date = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_maintenance_history.modify_date = #{modifyDate}
+			</if>
+		</trim>
+	</sql>
+	
+		<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_maintenance_history.id = #{id}
+			</if>
+			<if test="vin != null and vin != ''">
+				and b_maintenance_history.vin like CONCAT('%',#{vin},'%')
+			</if>
+			<if test="brand != null and brand != ''">
+				and b_maintenance_history.brand like CONCAT('%',#{brand},'%')
+			</if>
+			<if test="model != null and model != ''">
+				and b_maintenance_history.model like CONCAT('%',#{model},'%')
+			</if>
+			<if test="reportTime != null and reportTime != ''">
+				and b_maintenance_history.report_time like CONCAT('%',#{reportTime},'%')
+			</if>
+			<if test="producer != null and producer != ''">
+				and b_maintenance_history.producer like CONCAT('%',#{producer},'%')
+			</if>
+			<if test="transmission != null and transmission != ''">
+				and b_maintenance_history.transmission like CONCAT('%',#{transmission},'%')
+			</if>
+			<if test="displacement != null and displacement != ''">
+				and b_maintenance_history.displacement like CONCAT('%',#{displacement},'%')
+			</if>
+			<if test="structure != null and structure != ''">
+				and b_maintenance_history.structure like CONCAT('%',#{structure},'%')
+			</if>
+			<if test="maintenanceTimes != null and maintenanceTimes != ''">
+				and b_maintenance_history.maintenance_times like CONCAT('%',#{maintenanceTimes},'%')
+			</if>
+			<if test="srs != null and srs != ''">
+				and b_maintenance_history.srs like CONCAT('%',#{srs},'%')
+			</if>
+			<if test="maintenancePeriod != null and maintenancePeriod != ''">
+				and b_maintenance_history.maintenance_period like CONCAT('%',#{maintenancePeriod},'%')
+			</if>
+			<if test="recallRecord != null and recallRecord != ''">
+				and b_maintenance_history.recall_record like CONCAT('%',#{recallRecord},'%')
+			</if>
+			<if test="maxRange != null and maxRange != ''">
+				and b_maintenance_history.max_range like CONCAT('%',#{maxRange},'%')
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_maintenance_history.operator like CONCAT('%',#{operator},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_maintenance_history.create_date like CONCAT('%',#{createDate},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_maintenance_history.modify_date like CONCAT('%',#{modifyDate},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into b_maintenance_history(id,vin,brand,model,report_time,producer,transmission,displacement,structure,maintenance_times,srs,maintenance_period,recall_record,max_range,operator,create_date,modify_date)
+ values(#{id},#{vin},#{brand},#{model},#{reportTime},#{producer},#{transmission},#{displacement},#{structure},#{maintenanceTimes},#{srs},#{maintenancePeriod},#{recallRecord},#{maxRange},#{operator},#{createDate},#{modifyDate})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update b_maintenance_history set 
+	<trim  suffixOverrides="," >
+	<if test="vin != null  ">
+		vin=#{vin},
+	</if>
+	<if test="brand != null  ">
+		brand=#{brand},
+	</if>
+	<if test="model != null  ">
+		model=#{model},
+	</if>
+	<if test="reportTime != null  ">
+		report_time=#{reportTime},
+	</if>
+	<if test="producer != null  ">
+		producer=#{producer},
+	</if>
+	<if test="transmission != null  ">
+		transmission=#{transmission},
+	</if>
+	<if test="displacement != null  ">
+		displacement=#{displacement},
+	</if>
+	<if test="structure != null  ">
+		structure=#{structure},
+	</if>
+	<if test="maintenanceTimes != null  ">
+		maintenance_times=#{maintenanceTimes},
+	</if>
+	<if test="srs != null  ">
+		srs=#{srs},
+	</if>
+	<if test="maintenancePeriod != null  ">
+		maintenance_period=#{maintenancePeriod},
+	</if>
+	<if test="recallRecord != null  ">
+		recall_record=#{recallRecord},
+	</if>
+	<if test="maxRange != null  ">
+		max_range=#{maxRange},
+	</if>
+	<if test="operator != null  ">
+		operator=#{operator},
+	</if>
+	<if test="createDate != null  ">
+		create_date=#{createDate},
+	</if>
+	<if test="modifyDate != null  ">
+		modify_date=#{modifyDate},
+	</if>
+	</trim> where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete 	 from b_maintenance_history where id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from b_maintenance_history where id = #{id}
+	</select>
+
+	<!-- 根据id查询 -->
+	<select id="findByVin" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from b_maintenance_history where vin = #{vin}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_maintenance_history 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from b_maintenance_history 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_maintenance_history 
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition} 
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+</mapper>   

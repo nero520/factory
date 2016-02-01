@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.MemberTicketMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.MemberTicketEntity">
+		<result column="id" property="id" />
+		<result column="promotion_code" property="promotionCode" />
+		<result column="coupon_name" property="couponName" />
+		<result column="coupon_sn" property="couponSn" />
+		<result column="activity_sn" property="activitySn" />
+		<result column="activity_name" property="activityName" />
+		<result column="start_time" property="startTime" />
+		<result column="privilege_type" property="privilegeType" />
+		<result column="expiration_time" property="expirationTime" />
+		<result column="state" property="state" />
+		<result column="phone" property="phone" />
+		<result column="license" property="license" />
+		<result column="car_type" property="carType" />
+		<result column="modify_date" property="modifyDate" />
+		<result column="create_date" property="createDate" />
+	</resultMap>
+
+	<!-- g_member_ticket 字段 -->
+	<sql id="Column_List">
+		g_member_ticket.id,g_member_ticket.promotion_code,g_member_ticket.coupon_name,g_member_ticket.coupon_sn,g_member_ticket.activity_sn,g_member_ticket.activity_name,g_member_ticket.start_time,g_member_ticket.privilege_type,g_member_ticket.expiration_time,g_member_ticket.state,g_member_ticket.phone,g_member_ticket.license,g_member_ticket.car_type,g_member_ticket.modify_date,g_member_ticket.create_date
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and g_member_ticket.id = #{id}
+			</if>
+			<if test="promotionCode != null and promotionCode != ''">
+				and g_member_ticket.promotion_code = #{promotionCode}
+			</if>
+			<if test="couponName != null and couponName != ''">
+				and g_member_ticket.coupon_name = #{couponName}
+			</if>
+			<if test="couponSn != null and couponSn != ''">
+				and g_member_ticket.coupon_sn = #{couponSn}
+			</if>
+			<if test="activitySn != null and activitySn != ''">
+				and g_member_ticket.activity_sn = #{activitySn}
+			</if>
+			<if test="activityName != null and activityName != ''">
+				and g_member_ticket.activity_name = #{activityName}
+			</if>
+			<if test="startTime != null and startTime != ''">
+				and g_member_ticket.start_time = #{startTime}
+			</if>
+			<if test="privilegeType != null and privilegeType != ''">
+				and g_member_ticket.privilege_type = #{privilegeType}
+			</if>
+			<if test="expirationTime != null and expirationTime != ''">
+				and g_member_ticket.expiration_time = #{expirationTime}
+			</if>
+			<if test="state != null and state != ''">
+				and g_member_ticket.state = #{state}
+			</if>
+			<if test="phone != null and phone != ''">
+				and g_member_ticket.phone = #{phone}
+			</if>
+			<if test="license != null and license != ''">
+				and g_member_ticket.license = #{license}
+			</if>
+			<if test="carType != null and carType != ''">
+				and g_member_ticket.car_type = #{carType}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and g_member_ticket.modify_date = #{modifyDate}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and g_member_ticket.create_date = #{createDate}
+			</if>
+		</trim>
+	</sql>
+	
+		<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and g_member_ticket.id = #{id}
+			</if>
+			<if test="promotionCode != null and promotionCode != ''">
+				and g_member_ticket.promotion_code like CONCAT('%',#{promotionCode},'%')
+			</if>
+			<if test="couponName != null and couponName != ''">
+				and g_member_ticket.coupon_name like CONCAT('%',#{couponName},'%')
+			</if>
+			<if test="couponSn != null and couponSn != ''">
+				and g_member_ticket.coupon_sn like CONCAT('%',#{couponSn},'%')
+			</if>
+			<if test="activitySn != null and activitySn != ''">
+				and g_member_ticket.activity_sn like CONCAT('%',#{activitySn},'%')
+			</if>
+			<if test="activityName != null and activityName != ''">
+				and g_member_ticket.activity_name like CONCAT('%',#{activityName},'%')
+			</if>
+			<if test="startTime != null and startTime != ''">
+				and g_member_ticket.start_time like CONCAT('%',#{startTime},'%')
+			</if>
+			<if test="privilegeType != null and privilegeType != ''">
+				and g_member_ticket.privilege_type like CONCAT('%',#{privilegeType},'%')
+			</if>
+			<if test="expirationTime != null and expirationTime != ''">
+				and g_member_ticket.expiration_time like CONCAT('%',#{expirationTime},'%')
+			</if>
+			<if test="state != null and state != ''">
+				and g_member_ticket.state like CONCAT('%',#{state},'%')
+			</if>
+			<if test="phone != null and phone != ''">
+				and g_member_ticket.phone like CONCAT('%',#{phone},'%')
+			</if>
+			<if test="license != null and license != ''">
+				and g_member_ticket.license like CONCAT('%',#{license},'%')
+			</if>
+			<if test="carType != null and carType != ''">
+				and g_member_ticket.car_type like CONCAT('%',#{carType},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and g_member_ticket.modify_date like CONCAT('%',#{modifyDate},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and g_member_ticket.create_date like CONCAT('%',#{createDate},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into g_member_ticket(id,promotion_code,coupon_name,coupon_sn,activity_sn,activity_name,start_time,privilege_type,expiration_time,state,phone,license,car_type,modify_date,create_date)
+ values(#{id},#{promotionCode},#{couponName},#{couponSn},#{activitySn},#{activityName},#{startTime},#{privilegeType},#{expirationTime},#{state},#{phone},#{license},#{carType},#{modifyDate},#{createDate})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update g_member_ticket set 
+	<trim  suffixOverrides="," >
+	<if test="promotionCode != null  ">
+		promotion_code=#{promotionCode},
+	</if>
+	<if test="couponName != null  ">
+		coupon_name=#{couponName},
+	</if>
+	<if test="couponSn != null  ">
+		coupon_sn=#{couponSn},
+	</if>
+	<if test="activitySn != null  ">
+		activity_sn=#{activitySn},
+	</if>
+	<if test="activityName != null  ">
+		activity_name=#{activityName},
+	</if>
+	<if test="startTime != null  ">
+		start_time=#{startTime},
+	</if>
+	<if test="privilegeType != null  ">
+		privilege_type=#{privilegeType},
+	</if>
+	<if test="expirationTime != null  ">
+		expiration_time=#{expirationTime},
+	</if>
+	<if test="state != null  ">
+		state=#{state},
+	</if>
+	<if test="phone != null  ">
+		phone=#{phone},
+	</if>
+	<if test="license != null  ">
+		license=#{license},
+	</if>
+	<if test="carType != null  ">
+		car_type=#{carType},
+	</if>
+	<if test="modifyDate != null  ">
+		modify_date=#{modifyDate},
+	</if>
+	<if test="createDate != null  ">
+		create_date=#{createDate},
+	</if>
+	</trim> where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete 	 from g_member_ticket where id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from g_member_ticket where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from g_member_ticket 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from g_member_ticket 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from g_member_ticket 
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition} 
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+</mapper>   

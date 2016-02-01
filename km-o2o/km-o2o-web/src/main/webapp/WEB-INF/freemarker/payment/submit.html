@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type"
+	content="text/html; charset=[#if requestCharset?has_content]${requestCharset}[#else]utf-8[/#if]" />
+<title>车民生</title>
+</head>
+[#if paymentMethod==2]
+<script type="text/javascript">
+	//调用微信JS api 支付
+	function jsApiCall() {
+		WeixinJSBridge.invoke('getBrandWCPayRequest',{
+			"appId" : "${parameterMap.get("appId")}",
+			"timeStamp":"${parameterMap.get("timeStamp")}",
+			"nonceStr" : "${parameterMap.get("nonceStr")}",
+			"package" : "${parameterMap.get("package")}",
+			"signType" : "${parameterMap.get("signType")}",
+			"paySign" : "${parameterMap.get("paySign")}"
+			}, function(res) {
+					WeixinJSBridge.log(res.err_msg);
+					if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+						window.location.href="http://msoka.com/user/order/success.html?orderSn=${orderSn}";
+					}else if(res.err_msg == "get_brand_wcpay_request:cancel" ){
+						window.location.href="http://msoka.com/user/orders.html";
+					}else if(res.err_msg == "get_brand_wcpay_request:fail" ){
+						window.location.href="http://msoka.com/user/orders.html";
+					}else{
+						alert("微信异常...");
+					}
+				});
+	}
+	function callpay() {
+		if (typeof WeixinJSBridge == "undefined") {
+			if (document.addEventListener) {
+				document.addEventListener('WeixinJSBridgeReady', jsApiCall,
+						false);
+			} else if (document.attachEvent) {
+				document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+				document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+			}
+		} else {
+			jsApiCall();
+		}
+	}
+	callpay();
+</script>
+[#elseif paymentMethod==7]
+<script type="text/javascript">
+	function test() {
+		var deeplink = "";
+		[#if parameterMap??]
+		[#list parameterMap.entrySet() as entry] 
+		deeplink +="${entry.key}"+"="+escape("${entry.value}")+"&";
+		[/#list]
+		[/#if]
+		//appid=wxf5b5e87a6a0fde94&noncestr=123&package=WAP&prepayid=wx201412101630480281750c890475924233&sign=53D411FB74FE0B0C79CC94F2AB0E2333&timestamp=1417511263
+		//deeplink = escape(deeplink.substring(0,deeplink.length-1));
+		deeplink = deeplink.substring(0,deeplink.length-1);
+		deeplink = "weixin://wap/pay?"+deeplink;
+		//deeplink = "weixin://wap/pay?appid=wx04ee140646cc00f0&noncestr=d6ad41780b354cd38281edbf7f88c06d&package=WAP&prepayid=wx201507221351452c41911cf20305655474&sign=76A02FD5025357D5C99129E22C63682B&timestamp=1437544307";
+		//deeplink = "weixin://wap/pay?appid=wx04ee140646cc00f0&timestamp=1437544307&noncestr=d6ad41780b354cd38281edbf7f88c06d&package=WAP&prepayid=wx201507221351452c41911cf20305655474&sign=76A02FD5025357D5C99129E22C63682B";
+		
+		//deeplink = "weixin://wap/pay?appid=wx2a416286e96100ed&timestamp=1437543401&noncestr=m324w12cb6z1g33elhp187ktomz39mty&package=WAP&prepayid=wx20150722133641d2fcf80a7f0011173306&sign=DA614CDA164A04A1B15457EFD77646A2";
+		//alert(deeplink);
+		window.location = deeplink;
+	}
+</script>
+<body>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<button value="测试" onclick="test()">测 试</button>
+</body>
+[#else]
+<body onload="javascript: document.forms[0].submit();">
+	<form action="${requestUrl}" [#if
+		requestMethod??] method="${requestMethod}" [/#if][#if
+		requestCharset?has_content] accept-charset="${requestCharset}"[/#if]>
+		[#list parameterMap.entrySet() as entry] <input type="hidden"
+			name="${entry.key}" value="${entry.value}" /> [/#list]
+	</form>
+</body>
+[/#if]
+</html>

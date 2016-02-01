@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.CardUsedDetailMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.CardUsedDetailEntity">
+		<result column="id" property="id" />
+		<result column="card_no" property="cardNo" />
+		<result column="used_date" property="usedDate" />
+		<result column="used_name" property="usedName" />
+		<result column="used_description" property="usedDescription" />
+		<result column="type" property="type" />
+	</resultMap>
+
+	<!-- sh_card_used_detail 字段 -->
+	<sql id="Column_List">
+		sh_card_used_detail.id,sh_card_used_detail.card_no,sh_card_used_detail.used_date,sh_card_used_detail.used_name,sh_card_used_detail.used_description,sh_card_used_detail.type
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and sh_card_used_detail.id = #{id}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and sh_card_used_detail.card_no = #{cardNo}
+			</if>
+			<if test="usedDate != null and usedDate != ''">
+				and sh_card_used_detail.used_date = #{usedDate}
+			</if>
+			<if test="usedName != null and usedName != ''">
+				and sh_card_used_detail.used_name = #{usedName}
+			</if>
+			<if test="usedDescription != null and usedDescription != ''">
+				and sh_card_used_detail.used_description =
+				#{usedDescription}
+			</if>
+		</trim>
+	</sql>
+
+	<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and sh_card_used_detail.id = #{id}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and sh_card_used_detail.card_no like
+				CONCAT('%',#{cardNo},'%')
+			</if>
+			<if test="usedDate != null and usedDate != ''">
+				and sh_card_used_detail.used_date like
+				CONCAT('%',#{usedDate},'%')
+			</if>
+			<if test="usedName != null and usedName != ''">
+				and sh_card_used_detail.used_name like
+				CONCAT('%',#{usedName},'%')
+			</if>
+			<if test="usedDescription != null and usedDescription != ''">
+				and sh_card_used_detail.used_description like
+				CONCAT('%',#{usedDescription},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into
+		sh_card_used_detail(id,card_no,used_date,used_name,used_description)
+		values(#{id},#{cardNo},#{usedDate},#{usedName},#{usedDescription})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update sh_card_used_detail set
+		<trim suffixOverrides=",">
+			<if test="cardNo != null  ">
+				card_no=#{cardNo},
+			</if>
+			<if test="usedDate != null  ">
+				used_date=#{usedDate},
+			</if>
+			<if test="usedName != null  ">
+				used_name=#{usedName},
+			</if>
+			<if test="usedDescription != null  ">
+				used_description=#{usedDescription},
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete from
+		sh_card_used_detail where id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_used_detail where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_used_detail
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from sh_card_used_detail
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_used_detail
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition}
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+	<select id="findListByCardNo" resultMap="ResultMap"
+		parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_used_detail
+		where card_no = #{cardNo}
+	</select>
+
+	<select id="findListByCardNoAndType" resultMap="ResultMap"
+		parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_used_detail
+		where card_no = #{cardNo} and type=#{type}
+	</select>
+</mapper>   

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd"
+	default-lazy-init="true">
+	<!-- bean定义 -->
+	<bean id="pushUserJob" class="com.msds.km.job.PushUserJob"
+		lazy-init="true" />
+
+	<!-- scheduler定义 -->
+	<bean id="scheduler" lazy-init="true" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="pushUserJobTrigger" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="pushUserJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="pushUserJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>${job.cron.push.user}</value>
+		</property>
+	</bean>
+
+	<bean id="pushUserJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="pushUserJob" />
+		<property name="targetMethod" value="pushUser" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+</beans>

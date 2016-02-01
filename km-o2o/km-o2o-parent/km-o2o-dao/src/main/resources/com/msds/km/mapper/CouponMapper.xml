@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.CouponMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.CouponEntity">
+		<result column="id" property="id" />
+		<result column="coupon_sn" property="couponSn" />
+		<result column="coupon_name" property="couponName" />
+		<result column="type" property="type" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="instructions" property="instructions" />
+		<result column="state" property="state" />
+		<result column="operator" property="operator" />
+		<result column="create_date" property="createDate" />
+		<result column="modify_date" property="modifyDate" />
+	</resultMap>
+
+	<!-- b_coupon 字段 -->
+	<sql id="Column_List">
+		b_coupon.id,b_coupon.coupon_sn,b_coupon.coupon_name,b_coupon.type,b_coupon.start_date,b_coupon.end_date,b_coupon.instructions,b_coupon.state,b_coupon.operator,b_coupon.create_date,b_coupon.modify_date
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_coupon.id = #{id}
+			</if>
+			<if test="couponSn != null and couponSn != ''">
+				and b_coupon.coupon_sn = #{couponSn}
+			</if>
+			<if test="couponName != null and couponName != ''">
+				and b_coupon.coupon_name = #{couponName}
+			</if>
+			<if test="type != null and type != ''">
+				and b_coupon.type = #{type}
+			</if>
+			<if test="startDate != null and startDate != ''">
+				and b_coupon.start_date = #{startDate}
+			</if>
+			<if test="endDate != null and endDate != ''">
+				and b_coupon.end_date = #{endDate}
+			</if>
+			<if test="instructions != null and instructions != ''">
+				and b_coupon.instructions = #{instructions}
+			</if>
+			<if test="state != null and state != ''">
+				and b_coupon.state = #{state}
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_coupon.operator = #{operator}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_coupon.create_date = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_coupon.modify_date = #{modifyDate}
+			</if>
+			<if test="afterDate != null and afterDate != ''">
+				and <![CDATA[ b_coupon.end_date <= #{afterDate}]]>
+			</if>
+			<if test="beforeDate != null and beforeDate != ''">
+				and b_coupon.start_date >= #{beforeDate}
+			</if>
+		</trim>
+	</sql>
+	
+		<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_coupon.id = #{id}
+			</if>
+			<if test="couponSn != null and couponSn != ''">
+				and b_coupon.coupon_sn like CONCAT('%',#{couponSn},'%')
+			</if>
+			<if test="couponName != null and couponName != ''">
+				and b_coupon.coupon_name like CONCAT('%',#{couponName},'%')
+			</if>
+			<if test="type != null and type != ''">
+				and b_coupon.type like CONCAT('%',#{type},'%')
+			</if>
+			<if test="startDate != null and startDate != ''">
+				and b_coupon.start_date like CONCAT('%',#{startDate},'%')
+			</if>
+			<if test="endDate != null and endDate != ''">
+				and b_coupon.end_date like CONCAT('%',#{endDate},'%')
+			</if>
+			<if test="instructions != null and instructions != ''">
+				and b_coupon.instructions like CONCAT('%',#{instructions},'%')
+			</if>
+			<if test="state != null and state != ''">
+				and b_coupon.state like CONCAT('%',#{state},'%')
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_coupon.operator like CONCAT('%',#{operator},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_coupon.create_date like CONCAT('%',#{createDate},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_coupon.modify_date like CONCAT('%',#{modifyDate},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into b_coupon(id,coupon_sn,coupon_name,type,start_date,end_date,instructions,state,operator,create_date,modify_date)
+ values(#{id},#{couponSn},#{couponName},#{type},#{startDate},#{endDate},#{instructions},#{state},#{operator},#{createDate},#{modifyDate})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update b_coupon set 
+	<trim  suffixOverrides="," >
+	<if test="couponSn != null  ">
+		coupon_sn=#{couponSn},
+	</if>
+	<if test="couponName != null  ">
+		coupon_name=#{couponName},
+	</if>
+	<if test="type != null  ">
+		type=#{type},
+	</if>
+	<if test="startDate != null  ">
+		start_date=#{startDate},
+	</if>
+	<if test="endDate != null  ">
+		end_date=#{endDate},
+	</if>
+	<if test="instructions != null  ">
+		instructions=#{instructions},
+	</if>
+	<if test="state != null  ">
+		state=#{state},
+	</if>
+	<if test="operator != null  ">
+		operator=#{operator},
+	</if>
+	<if test="createDate != null  ">
+		create_date=#{createDate},
+	</if>
+	<if test="modifyDate != null  ">
+		modify_date=#{modifyDate},
+	</if>
+	</trim> where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete 	 from b_coupon where id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from b_coupon where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_coupon 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from b_coupon 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_coupon 
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition} 
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+	<select id="findInIds" resultMap="ResultMap">
+		select <include refid="Column_List" /> 
+	from b_coupon where id in 
+	<foreach item="item" index="index" collection="array" open="(" separator="," close=")">  
+		#{item}  
+	</foreach>
+	</select>
+</mapper>   

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.CardLogMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.CardLogEntity">
+		<result column="id" property="id" />
+		<result column="card_no" property="cardNo" />
+		<result column="opeartor" property="opeartor" />
+		<result column="create_date" property="createDate" />
+		<result column="modify_date" property="modifyDate" />
+		<result column="state" property="state" />
+	</resultMap>
+
+	<!-- nb_card_log 字段 -->
+	<sql id="Column_List">
+		nb_card_log.id,nb_card_log.card_no,nb_card_log.opeartor,nb_card_log.create_date,nb_card_log.modify_date,nb_card_log.state
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and nb_card_log.id = #{id}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and nb_card_log.card_no = #{cardNo}
+			</if>
+			<if test="opeartor != null and opeartor != ''">
+				and nb_card_log.opeartor = #{opeartor}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and nb_card_log.create_date = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and nb_card_log.modify_date = #{modifyDate}
+			</if>
+			<if test="state != null and state != ''">
+				and nb_card_log.state = #{state}
+			</if>
+		</trim>
+	</sql>
+	
+		<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and nb_card_log.id = #{id}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and nb_card_log.card_no like CONCAT('%',#{cardNo},'%')
+			</if>
+			<if test="opeartor != null and opeartor != ''">
+				and nb_card_log.opeartor like CONCAT('%',#{opeartor},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and nb_card_log.create_date like CONCAT('%',#{createDate},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and nb_card_log.modify_date like CONCAT('%',#{modifyDate},'%')
+			</if>
+			<if test="state != null and state != ''">
+				and nb_card_log.state like CONCAT('%',#{state},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into nb_card_log(id,card_no,opeartor,create_date,modify_date,state)
+ values(#{id},#{cardNo},#{opeartor},#{createDate},#{modifyDate},#{state})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update nb_card_log set 
+	<trim  suffixOverrides="," >
+	<if test="cardNo != null  ">
+		card_no=#{cardNo},
+	</if>
+	<if test="opeartor != null  ">
+		opeartor=#{opeartor},
+	</if>
+	<if test="createDate != null  ">
+		create_date=#{createDate},
+	</if>
+	<if test="modifyDate != null  ">
+		modify_date=#{modifyDate},
+	</if>
+	<if test="state != null  ">
+		state=#{state},
+	</if>
+	</trim> where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete 	 from nb_card_log where id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from nb_card_log where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from nb_card_log 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from nb_card_log 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from nb_card_log 
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition} 
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+</mapper>   

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.MaintenanceHistoryDetailMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.MaintenanceHistoryDetailEntity">
+		<result column="id" property="id" />
+		<result column="vin" property="vin" />
+		<result column="maintenance_date" property="maintenanceDate" />
+		<result column="mileage" property="mileage" />
+		<result column="type" property="type" />
+		<result column="maintenance_content" property="maintenanceContent" />
+		<result column="operator" property="operator" />
+		<result column="create_date" property="createDate" />
+		<result column="modify_date" property="modifyDate" />
+	</resultMap>
+
+	<!-- b_maintenance_history_detail 字段 -->
+	<sql id="Column_List">
+		b_maintenance_history_detail.id,b_maintenance_history_detail.vin,b_maintenance_history_detail.maintenance_date,b_maintenance_history_detail.mileage,b_maintenance_history_detail.type,b_maintenance_history_detail.maintenance_content,b_maintenance_history_detail.operator,b_maintenance_history_detail.create_date,b_maintenance_history_detail.modify_date
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_maintenance_history_detail.id = #{id}
+			</if>
+			<if test="vin != null and vin != ''">
+				and b_maintenance_history_detail.vin = #{vin}
+			</if>
+			<if test="maintenanceDate != null and maintenanceDate != ''">
+				and b_maintenance_history_detail.maintenance_date = #{maintenanceDate}
+			</if>
+			<if test="mileage != null and mileage != ''">
+				and b_maintenance_history_detail.mileage = #{mileage}
+			</if>
+			<if test="type != null and type != ''">
+				and b_maintenance_history_detail.type = #{type}
+			</if>
+			<if test="maintenanceContent != null and maintenanceContent != ''">
+				and b_maintenance_history_detail.maintenance_content = #{maintenanceContent}
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_maintenance_history_detail.operator = #{operator}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_maintenance_history_detail.create_date = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_maintenance_history_detail.modify_date = #{modifyDate}
+			</if>
+		</trim>
+	</sql>
+	
+		<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_maintenance_history_detail.id = #{id}
+			</if>
+			<if test="vin != null and vin != ''">
+				and b_maintenance_history_detail.vin like CONCAT('%',#{vin},'%')
+			</if>
+			<if test="maintenanceDate != null and maintenanceDate != ''">
+				and b_maintenance_history_detail.maintenance_date like CONCAT('%',#{maintenanceDate},'%')
+			</if>
+			<if test="mileage != null and mileage != ''">
+				and b_maintenance_history_detail.mileage like CONCAT('%',#{mileage},'%')
+			</if>
+			<if test="type != null and type != ''">
+				and b_maintenance_history_detail.type like CONCAT('%',#{type},'%')
+			</if>
+			<if test="maintenanceContent != null and maintenanceContent != ''">
+				and b_maintenance_history_detail.maintenance_content like CONCAT('%',#{maintenanceContent},'%')
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_maintenance_history_detail.operator like CONCAT('%',#{operator},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_maintenance_history_detail.create_date like CONCAT('%',#{createDate},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_maintenance_history_detail.modify_date like CONCAT('%',#{modifyDate},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into b_maintenance_history_detail(id,vin,maintenance_date,mileage,type,maintenance_content,operator,create_date,modify_date)
+ values(#{id},#{vin},#{maintenanceDate},#{mileage},#{type},#{maintenanceContent},#{operator},#{createDate},#{modifyDate})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update b_maintenance_history_detail set 
+	<trim  suffixOverrides="," >
+	<if test="vin != null  ">
+		vin=#{vin},
+	</if>
+	<if test="maintenanceDate != null  ">
+		maintenance_date=#{maintenanceDate},
+	</if>
+	<if test="mileage != null  ">
+		mileage=#{mileage},
+	</if>
+	<if test="type != null  ">
+		type=#{type},
+	</if>
+	<if test="maintenanceContent != null  ">
+		maintenance_content=#{maintenanceContent},
+	</if>
+	<if test="operator != null  ">
+		operator=#{operator},
+	</if>
+	<if test="createDate != null  ">
+		create_date=#{createDate},
+	</if>
+	<if test="modifyDate != null  ">
+		modify_date=#{modifyDate},
+	</if>
+	</trim> where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete 	 from b_maintenance_history_detail where id = #{id}
+	</delete>
+
+	<!-- 删除记录 -->
+	<delete id="deleteByVin" parameterType="Object">
+		delete from b_maintenance_history_detail where vin = #{vin}
+	</delete>
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from b_maintenance_history_detail where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_maintenance_history_detail 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from b_maintenance_history_detail 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_maintenance_history_detail 
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition} 
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+</mapper>   

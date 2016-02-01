@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.RepairListMapper">
+	<!-- Result Map -->
+	<resultMap id="repairList" type="com.msds.km.entity.RepairListEntity">
+		<result column="id" property="id" />
+		<result column="repair_no" property="repairNo" />
+		<result column="repair_type" property="repairType" />
+		<result column="card_no" property="cardNo" />
+		<result column="member_name" property="memberName" />
+		<result column="member_phone" property="memberPhone" />
+		<result column="vin" property="vin" />
+		<result column="mileage" property="mileage" />
+		<result column="settle_type" property="settleType" />
+		<result column="settle_amount" property="settleAmount" />
+		<result column="settle_date" property="settleDate" />
+	</resultMap>
+	
+	
+	<select id="getRepairList" resultMap="repairList" parameterType="Object">
+		
+		select distinct repair_no,repair_type,card_no,member_name,member_phone,vin,mileage,settle_type,settle_amount,settle_date
+			from sh_repair_list where 1=1
+			
+		<include refid="repairListWhere" />
+		
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition}
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+	
+	
+	<select id="getRepairListCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from (select distinct repair_no,repair_type,card_no,member_name,member_phone,vin,mileage,settle_type,settle_amount,settle_date
+			from sh_repair_list where 1=1
+		<include refid="repairListWhere" />
+		
+		)  aa 
+	</select>
+	
+	<sql id="repairListWhere">
+		
+		<trim suffixOverrides=",">
+			<if test="settleType != null and settleType != ''">
+				and settle_type = #{settleType} 
+			</if>
+			<if test="repairType != null and repairType != ''">
+				and repair_type = #{repairType} 
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and card_no like CONCAT('%',#{cardNo},'%')
+			</if>
+			<if test="license != null and license != ''">
+				and license like CONCAT('%',#{license},'%')
+			</if>
+			<if test="afterDate != null and afterDate != ''">
+				and <![CDATA[ settle_date <= #{afterDate}]]>
+			</if>
+			<if test="beforeDate != null and beforeDate != ''">
+				and settle_date >= #{beforeDate}
+			</if>
+			
+		</trim>
+	</sql>
+	
+
+	<!-- 插入记录 -->
+	<insert id="importData" parameterType="java.util.List">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into sh_repair_list(repair_no,repair_type,card_no,member_name,member_phone,license,model_group_name,
+									vin,mileage,settle_type,settle_amount,settle_date,create_date)
+ 							values
+ 							<foreach collection="list" item="item" index="index" separator="," >  
+						        (#{item.repairNo},#{item.repairType},#{item.cardNo},#{item.memberName},#{item.memberPhone},#{item.license},#{item.modelGroupName},
+ 									#{item.vin},#{item.mileage},#{item.settleType},#{item.settleAmount},#{item.settleDate},#{item.createDate})
+						    </foreach>  
+ 							
+	</insert>
+
+	<select id="existsByMemberPhoneOrvin" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from sh_repair_list where member_phone=#{memberPhone} or vin=#{vin}
+	</select>
+</mapper>   

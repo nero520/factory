@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.FactoryCarMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.FactoryCarEntity">
+		<result column="id" property="id" />
+		<result column="card_no" property="cardNo" />
+		<result column="license" property="license" />
+		<result column="amount" property="amount" />
+		<result column="state" property="state" />
+		<result column="factory_id" property="factoryId" />
+		<result column="factory_name" property="factoryName" />
+		<result column="create_date" property="createDate" />
+		<result column="modify_date" property="modifyDate" />
+	</resultMap>
+
+	<resultMap id="rankVo" type="com.msds.km.vo.RankVo">
+	    <result column="id" property="id" />
+		<result column="total" property="total" />
+		<result column="amount" property="amount" />
+		<result column="factory_name" property="factoryName" />
+		<result column="pickUpTotal" property="pickUpTotal" />
+	</resultMap>
+	
+	<resultMap id="dateRankVo" type="com.msds.km.vo.DateRankVo">
+		<result column="total" property="total" />
+		<result column="amount" property="amount" />
+		<result column="dateTime" property="dateTime" />
+		<result column="pickUpTotal" property="pickUpTotal" />
+	</resultMap>
+
+	<!-- nb_factory_car 字段 -->
+	<sql id="Column_List">
+		nb_factory_car.id,nb_factory_car.card_no,nb_factory_car.license,nb_factory_car.amount,nb_factory_car.state,nb_factory_car.factory_id,nb_factory_car.factory_name,nb_factory_car.create_date,nb_factory_car.modify_date
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and nb_factory_car.id = #{id}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and nb_factory_car.card_no = #{cardNo}
+			</if>
+			<if test="license != null and license != ''">
+				and nb_factory_car.license = #{license}
+			</if>
+			<if test="amount != null and amount != ''">
+				and nb_factory_car.amount = #{amount}
+			</if>
+			<if test="state != null and state != ''">
+				and nb_factory_car.state = #{state}
+			</if>
+			<if test="factoryId != null and factoryId != ''">
+				and nb_factory_car.factory_id = #{factoryId}
+			</if>
+			<if test="factoryName != null and factoryName != ''">
+				and nb_factory_car.factory_name = #{factoryName}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and nb_factory_car.create_date = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and nb_factory_car.modify_date = #{modifyDate}
+			</if>
+		</trim>
+	</sql>
+
+	<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and nb_factory_car.id = #{id}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and nb_factory_car.card_no like CONCAT('%',#{cardNo},'%')
+			</if>
+			<if test="license != null and license != ''">
+				and nb_factory_car.license like
+				CONCAT('%',#{license},'%')
+			</if>
+			<if test="amount != null and amount != ''">
+				and nb_factory_car.amount like CONCAT('%',#{amount},'%')
+			</if>
+			<if test="state != null and state != ''">
+				and nb_factory_car.state like CONCAT('%',#{state},'%')
+			</if>
+			<if test="factoryId != null and factoryId != ''">
+				and nb_factory_car.factory_id like
+				CONCAT('%',#{factoryId},'%')
+			</if>
+			<if test="factoryName != null and factoryName != ''">
+				and nb_factory_car.factory_name like
+				CONCAT('%',#{factoryName},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and nb_factory_car.create_date like
+				CONCAT('%',#{createDate},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and nb_factory_car.modify_date like
+				CONCAT('%',#{modifyDate},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into
+		nb_factory_car(id,card_no,license,amount,state,factory_id,factory_name,create_date,modify_date)
+		values(#{id},#{cardNo},#{license},#{amount},#{state},#{factoryId},#{factoryName},#{createDate},#{modifyDate})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update nb_factory_car set
+		<trim suffixOverrides=",">
+			<if test="cardNo != null  ">
+				card_no=#{cardNo},
+			</if>
+			<if test="license != null  ">
+				license=#{license},
+			</if>
+			<if test="amount != null  ">
+				amount=#{amount},
+			</if>
+			<if test="state != null  ">
+				state=#{state},
+			</if>
+			<if test="factoryId != null  ">
+				factory_id=#{factoryId},
+			</if>
+			<if test="factoryName != null  ">
+				factory_name=#{factoryName},
+			</if>
+			<if test="createDate != null  ">
+				create_date=#{createDate},
+			</if>
+			<if test="modifyDate != null  ">
+				modify_date=#{modifyDate},
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete from nb_factory_car
+		where id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from nb_factory_car where id = #{id}
+	</select>
+
+	<select id="findDayRankListById" resultMap="dateRankVo" parameterType="Object">
+	
+	select  dateTime, CONVERT (sum(amount), DECIMAL(20)) as amount,sum(jieche) as pickUpTotal,sum(jiaoche) as total FROM (
+		SELECT
+			factory_id,
+			
+			DATE_FORMAT(
+			nb_factory_car.create_date,
+			"%Y-%m-%d"
+			) AS dateTime,
+			0 as amount,
+			count(1) as jieche,
+			0 as jiaoche
+			
+			FROM
+				nb_factory_car
+			where factory_id = #{id}
+			group by dateTime
+	     UNION
+		SELECT
+			factory_id,
+			DATE_FORMAT(
+			nb_factory_car.modify_date,
+			"%Y-%m-%d"
+			) AS dateTime,
+			sum(amount),
+			0 as jieche,
+			count(1) as jiaoche
+			FROM
+				nb_factory_car
+			where factory_id = #{id} and state = 2
+			group by dateTime
+) tmp group by dateTime
+
+ORDER BY
+		dateTime DESC,
+		amount DESC,
+		total DESC
+	
+	
+
+	<!-- 查询排名列表 -->
+	<select id="findRankList" resultMap="rankVo">
+
+
+
+		SELECT
+		nb_factory.id,
+		nb_factory.factory_name,
+		CASE
+		WHEN t.amount IS NULL THEN
+		0
+		ELSE
+		convert(t.amount,decimal(20))
+		END amount,
+		CASE
+		WHEN t.total IS NULL THEN
+		0
+		ELSE
+		t.total
+		END total,
+		case
+		when
+		m.pickUpTotal is null THEN
+		0
+		ELSE
+		m.pickUpTotal
+		end pickUpTotal
+		FROM
+		nb_factory
+		LEFT JOIN (
+		SELECT
+		nb_factory_car.factory_id,
+		COUNT(1) total,
+		sum(nb_factory_car.amount) AS amount
+		FROM
+		nb_factory_car
+		WHERE
+		nb_factory_car.state = 2
+		<if test="state==1">
+			AND to_days(nb_factory_car.modify_date) = to_days(now())
+		</if>
+		<if test="state==2">
+			AND DATE_FORMAT(
+			nb_factory_car.modify_date,
+			'%Y%m'
+			) = DATE_FORMAT(CURDATE(), '%Y%m')
+
+		</if>
+		GROUP BY
+		nb_factory_car.factory_id
+		) t ON nb_factory.id = t.factory_id
+
+		left join (
+		SELECT
+		nb_factory_car.factory_id,
+		COUNT(1) pickUpTotal
+		FROM
+		nb_factory_car
+		WHERE
+		1 = 1
+		<if test="state==1">
+			AND to_days(nb_factory_car.create_date) = to_days(now())
+		</if>
+		<if test="state==2">
+			AND DATE_FORMAT(
+			nb_factory_car.create_date,
+			'%Y%m'
+			) = DATE_FORMAT(CURDATE(), '%Y%m')
+
+		</if>
+		GROUP BY
+		nb_factory_car.factory_id
+		) m on nb_factory.id=m.factory_id
+
+		ORDER BY
+		amount DESC,
+		total DESC
+
+	</select>
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from nb_factory_car
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from nb_factory_car
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from nb_factory_car
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition}
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+</mapper>   

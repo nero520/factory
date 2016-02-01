@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.CardInfoMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.CardInfoEntity">
+		<result column="id" property="id" />
+		<result column="card_no" property="cardNo" />
+		<result column="begin_date" property="beginDate" />
+		<result column="balance" property="balance" />
+		<result column="total_cost" property="totalCost" />
+		<result column="cust_phone" property="custPhone" />
+		<result column="cust_name" property="custName" />
+		<result column="card_image" property="cardImage" />
+	</resultMap>
+
+	<!-- sh_card_info 字段 -->
+	<sql id="Column_List">
+		sh_card_info.id,sh_card_info.card_no,sh_card_info.begin_date,sh_card_info.balance,sh_card_info.total_cost,sh_card_info.cust_phone,sh_card_info.cust_name,sh_card_info.card_image
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and sh_card_info.id = #{id}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and sh_card_info.card_no = #{cardNo}
+			</if>
+			<if test="beginDate != null and beginDate != ''">
+				and sh_card_info.begin_date = #{beginDate}
+			</if>
+			<if test="balance != null and balance != ''">
+				and sh_card_info.balance = #{balance}
+			</if>
+			<if test="totalCost != null and totalCost != ''">
+				and sh_card_info.total_cost = #{totalCost}
+			</if>
+			<if test="custPhone != null and custPhone != ''">
+				and sh_card_info.cust_phone = #{custPhone}
+			</if>
+			<if test="custName != null and custName != ''">
+				and sh_card_info.cust_name = #{custName}
+			</if>
+			<if test="cardImage != null and cardImage != ''">
+				and sh_card_info.card_image = #{cardImage}
+			</if>
+		</trim>
+	</sql>
+
+	<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and sh_card_info.id = #{id}
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				and sh_card_info.card_no like CONCAT('%',#{cardNo},'%')
+			</if>
+			<if test="beginDate != null and beginDate != ''">
+				and sh_card_info.begin_date like
+				CONCAT('%',#{beginDate},'%')
+			</if>
+			<if test="balance != null and balance != ''">
+				and sh_card_info.balance like CONCAT('%',#{balance},'%')
+			</if>
+			<if test="totalCost != null and totalCost != ''">
+				and sh_card_info.total_cost like
+				CONCAT('%',#{totalCost},'%')
+			</if>
+			<if test="custPhone != null and custPhone != ''">
+				and sh_card_info.cust_phone like
+				CONCAT('%',#{custPhone},'%')
+			</if>
+			<if test="custName != null and custName != ''">
+				and sh_card_info.cust_name like
+				CONCAT('%',#{custName},'%')
+			</if>
+			<if test="cardImage != null and cardImage != ''">
+				and sh_card_info.card_image like
+				CONCAT('%',#{cardImage},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into
+		sh_card_info(id,card_no,begin_date,balance,total_cost,cust_phone,cust_name,card_image)
+		values(#{id},#{cardNo},#{beginDate},#{balance},#{totalCost},#{custPhone},#{custName},#{cardImage})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update sh_card_info set
+		<trim suffixOverrides=",">
+			<if test="cardNo != null  ">
+				card_no=#{cardNo},
+			</if>
+			<if test="beginDate != null  ">
+				begin_date=#{beginDate},
+			</if>
+			<if test="balance != null  ">
+				balance=#{balance},
+			</if>
+			<if test="totalCost != null  ">
+				total_cost=#{totalCost},
+			</if>
+			<if test="custPhone != null  ">
+				cust_phone=#{custPhone},
+			</if>
+			<if test="custName != null  ">
+				cust_name=#{custName},
+			</if>
+			<if test="cardImage != null  ">
+				card_image=#{cardImage},
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete from sh_card_info where
+		id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_info where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_info
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from sh_card_info
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_info
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition}
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+	<!-- 根据phone查询 -->
+	<select id="findByPhone" resultMap="ResultMap" parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from sh_card_info where cust_phone=#{custPhone}
+	</select>
+</mapper>   

@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.CheckBillMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.CheckBillEntity">
+		<result column="id" property="id" />
+		<result column="company_id" property="companyId" />
+		<result column="bill_sn" property="billSn" />
+		<result column="customer_name" property="customerName" />
+		<result column="telphone" property="telphone" />
+		<result column="license" property="license" />
+		<result column="service_code" property="serviceCode" />
+		<result column="model_id3" property="modelId3" />
+		<result column="model_id2" property="modelId2" />
+		<result column="model_id" property="modelId" />
+		<result column="full_model_name" property="fullModelName" />
+		<result column="create_date" property="createDate" />
+		<result column="modify_date" property="modifyDate" />
+		<result column="zqltw1" property="zqltw1" />
+		<result column="yqltw1" property="yqltw1" />
+		<result column="zhltw2" property="zhltw2" />
+		<result column="yhltw2" property="yhltw2" />
+		<result column="zqlty3" property="zqlty3" />
+		<result column="yqlty4" property="yqlty4" />
+		<result column="zhlty5" property="zhlty5" />
+		<result column="yhlty6" property="yhlty6" />
+		<result column="ex_zyqhltty34567" property="exZyqhltty34567" />
+		<result column="deal_zyqhltty34567" property="dealZyqhltty34567" />
+		<result column="jqm8" property="jqm8" />
+		<result column="ex_jqm8" property="exJqm8" />
+		<result column="ltlsnj9" property="ltlsnj9" />
+		<result column="ex_ltlsnj9" property="exLtlsnj9" />
+		<result column="deal_ltlsnj89" property="dealLtlsnj89" />
+		<result column="zqscp10" property="zqscp10" />
+		<result column="yqscp11" property="yqscp11" />
+		<result column="zhscp12" property="zhscp12" />
+		<result column="yhscp13" property="yhscp13" />
+		<result column="zqscpa14" property="zqscpa14" />
+		<result column="yqscpa15" property="yqscpa15" />
+		<result column="zhscpa16" property="zhscpa16" />
+		<result column="yhscpa17" property="yhscpa17" />
+		<result column="deal_qhzysppa14151617" property="dealQhzysppa14151617" />
+		<result column="zdlhsl18" property="zdlhsl18" />
+		<result column="deal_zdlhsl18" property="dealZdlhsl18" />
+		<result column="ktyw19" property="ktyw19" />
+		<result column="ex_ktyw19" property="exKtyw19" />
+		<result column="ktzl20" property="ktzl20" />
+		<result column="ex_ktzl20" property="exKtzl20" />
+		<result column="ktwd21" property="ktwd21" />
+		<result column="ex_ktwd21" property="exKtwd21" />
+		<result column="ktlx22" property="ktlx22" />
+		<result column="ex_ktlx22" property="exKtlx22" />
+		<result column="ktgzyf23" property="ktgzyf23" />
+		<result column="deal_kt19202122" property="dealKt19202122" />
+		<result column="qclb24" property="qclb24" />
+		<result column="ex_qclb24" property="exQclb24" />
+		<result column="qcyx25" property="qcyx25" />
+		<result column="ex_qcyx25" property="exQcyx25" />
+		<result column="aqd26" property="aqd26" />
+		<result column="ex_aqd26" property="exAqd26" />
+		<result column="zks27" property="zks27" />
+		<result column="ex_zks27" property="exZks27" />
+		<result column="zdcc28" property="zdcc28" />
+		<result column="ex_zdcc28" property="exZdcc28" />
+		<result column="deal_qclyazz2425262728" property="dealQclyazz2425262728" />
+		<result column="xdcxn29" property="xdcxn29" />
+		<result column="fdyyw30" property="fdyyw30" />
+		<result column="hhsfsd31" property="hhsfsd31" />
+		<result column="ex_hhsfsd31" property="exHhsfsd31" />
+		<result column="fdjyw32" property="fdjyw32" />
+		<result column="ex_fdjyw32" property="exFdjyw32" />
+		<result column="deal_xfhf29303132" property="dealXfhf29303132" />
+		<result column="zxyywgl33" property="zxyywgl33" />
+		<result column="ex_zxyywgl33" property="exZxyywgl33" />
+		<result column="fdjpdgl34" property="fdjpdgl34" />
+		<result column="ex_fdjpdgl34" property="exFdjpdgl34" />
+		<result column="deal_zxypd3334" property="dealZxypd3334" />
+		<result column="jzq35" property="jzq35" />
+		<result column="ex_jzq35" property="exJzq35" />
+		<result column="ztzc36" property="ztzc36" />
+		<result column="ex_ztzc36" property="exZtzc36" />
+		<result column="dpj37" property="dpj37" />
+		<result column="ex_dpj37" property="exDpj37" />
+		<result column="cdzfct38" property="cdzfct38" />
+		<result column="ex_cdzfct38" property="exCdzfct38" />
+		<result column="wxjaqt39" property="wxjaqt39" />
+		<result column="ex_wxjaqt39" property="exWxjaqt39" />
+		<result column="bsxzj40" property="bsxzj40" />
+		<result column="ex_bsxzj40" property="exBsxzj40" />
+		<result column="deal_jzdcwb353637383940" property="dealJzdcwb353637383940" />
+		<result column="cndg41" property="cndg41" />
+		<result column="ex_cndg41" property="exCndg41" />
+		<result column="cwdg42" property="cwdg42" />
+		<result column="ex_cwdg42" property="exCwdg42" />
+		<result column="ybpgzd43" property="ybpgzd43" />
+		<result column="ex_ybpgzd43" property="exYbpgzd43" />
+		<result column="deal_cnwybp414243" property="dealCnwybp414243" />
+		<result column="blqxy44" property="blqxy44" />
+		<result column="recheck" property="recheck" />
+		<result column="suggest" property="suggest" />
+	</resultMap>
+
+	<!-- b_check_bill 字段 -->
+	<sql id="Column_List">
+		b_check_bill.id,b_check_bill.company_id,b_check_bill.bill_sn,b_check_bill.customer_name,b_check_bill.telphone,b_check_bill.license,b_check_bill.service_code,b_check_bill.model_id3,b_check_bill.model_id2,b_check_bill.model_id,b_check_bill.full_model_name,b_check_bill.create_date,b_check_bill.modify_date,b_check_bill.zqltw1,b_check_bill.yqltw1,b_check_bill.zhltw2,b_check_bill.yhltw2,b_check_bill.zqlty3,b_check_bill.yqlty4,b_check_bill.zhlty5,b_check_bill.yhlty6,b_check_bill.ex_zyqhltty34567,b_check_bill.deal_zyqhltty34567,b_check_bill.jqm8,b_check_bill.ex_jqm8,b_check_bill.ltlsnj9,b_check_bill.ex_ltlsnj9,b_check_bill.deal_ltlsnj89,b_check_bill.zqscp10,b_check_bill.yqscp11,b_check_bill.zhscp12,b_check_bill.yhscp13,b_check_bill.zqscpa14,b_check_bill.yqscpa15,b_check_bill.zhscpa16,b_check_bill.yhscpa17,b_check_bill.deal_qhzysppa14151617,b_check_bill.zdlhsl18,b_check_bill.deal_zdlhsl18,b_check_bill.ktyw19,b_check_bill.ex_ktyw19,b_check_bill.ktzl20,b_check_bill.ex_ktzl20,b_check_bill.ktwd21,b_check_bill.ex_ktwd21,b_check_bill.ktlx22,b_check_bill.ex_ktlx22,b_check_bill.ktgzyf23,b_check_bill.deal_kt19202122,b_check_bill.qclb24,b_check_bill.ex_qclb24,b_check_bill.qcyx25,b_check_bill.ex_qcyx25,b_check_bill.aqd26,b_check_bill.ex_aqd26,b_check_bill.zks27,b_check_bill.ex_zks27,b_check_bill.zdcc28,b_check_bill.ex_zdcc28,b_check_bill.deal_qclyazz2425262728,b_check_bill.xdcxn29,b_check_bill.fdyyw30,b_check_bill.hhsfsd31,b_check_bill.ex_hhsfsd31,b_check_bill.fdjyw32,b_check_bill.ex_fdjyw32,b_check_bill.deal_xfhf29303132,b_check_bill.zxyywgl33,b_check_bill.ex_zxyywgl33,b_check_bill.fdjpdgl34,b_check_bill.ex_fdjpdgl34,b_check_bill.deal_zxypd3334,b_check_bill.jzq35,b_check_bill.ex_jzq35,b_check_bill.ztzc36,b_check_bill.ex_ztzc36,b_check_bill.dpj37,b_check_bill.ex_dpj37,b_check_bill.cdzfct38,b_check_bill.ex_cdzfct38,b_check_bill.wxjaqt39,b_check_bill.ex_wxjaqt39,b_check_bill.bsxzj40,b_check_bill.ex_bsxzj40,b_check_bill.deal_jzdcwb353637383940,b_check_bill.cndg41,b_check_bill.ex_cndg41,b_check_bill.cwdg42,b_check_bill.ex_cwdg42,b_check_bill.ybpgzd43,b_check_bill.ex_ybpgzd43,b_check_bill.deal_cnwybp414243,b_check_bill.blqxy44,b_check_bill.recheck,b_check_bill.suggest
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_check_bill.id = #{id}
+			</if>
+			<if test="companyId != null and companyId != ''">
+				and b_check_bill.company_id = #{companyId}
+			</if>
+			<if test="billSn != null and billSn != ''">
+				and b_check_bill.bill_sn = #{billSn}
+			</if>
+			<if test="customerName != null and customerName != ''">
+				and b_check_bill.customer_name = #{customerName}
+			</if>
+			<if test="telphone != null and telphone != ''">
+				and b_check_bill.telphone = #{telphone}
+			</if>
+			<if test="license != null and license != ''">
+				and b_check_bill.license = #{license}
+			</if>
+			<if test="serviceCode != null and serviceCode != ''">
+				and b_check_bill.service_code = #{serviceCode}
+			</if>
+			<if test="modelId3 != null and modelId3 != ''">
+				and b_check_bill.model_id3 = #{modelId3}
+			</if>
+			<if test="modelId2 != null and modelId2 != ''">
+				and b_check_bill.model_id2 = #{modelId2}
+			</if>
+			<if test="modelId != null and modelId != ''">
+				and b_check_bill.model_id = #{modelId}
+			</if>
+			<if test="fullModelName != null and fullModelName != ''">
+				and b_check_bill.full_model_name = #{fullModelName}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_check_bill.create_date = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_check_bill.modify_date = #{modifyDate}
+			</if>
+			<if test="zqltw1 != null and zqltw1 != ''">
+				and b_check_bill.zqltw1 = #{zqltw1}
+			</if>
+			<if test="yqltw1 != null and yqltw1 != ''">
+				and b_check_bill.yqltw1 = #{yqltw1}
+			</if>
+			<if test="zhltw2 != null and zhltw2 != ''">
+				and b_check_bill.zhltw2 = #{zhltw2}
+			</if>
+			<if test="yhltw2 != null and yhltw2 != ''">
+				and b_check_bill.yhltw2 = #{yhltw2}
+			</if>
+			<if test="zqlty3 != null and zqlty3 != ''">
+				and b_check_bill.zqlty3 = #{zqlty3}
+			</if>
+			<if test="yqlty4 != null and yqlty4 != ''">
+				and b_check_bill.yqlty4 = #{yqlty4}
+			</if>
+			<if test="zhlty5 != null and zhlty5 != ''">
+				and b_check_bill.zhlty5 = #{zhlty5}
+			</if>
+			<if test="yhlty6 != null and yhlty6 != ''">
+				and b_check_bill.yhlty6 = #{yhlty6}
+			</if>
+			<if test="exZyqhltty34567 != null and exZyqhltty34567 != ''">
+				and b_check_bill.ex_zyqhltty34567 = #{exZyqhltty34567}
+			</if>
+			<if test="dealZyqhltty34567 != null and dealZyqhltty34567 != ''">
+				and b_check_bill.deal_zyqhltty34567 = #{dealZyqhltty34567}
+			</if>
+			<if test="jqm8 != null and jqm8 != ''">
+				and b_check_bill.jqm8 = #{jqm8}
+			</if>
+			<if test="exJqm8 != null and exJqm8 != ''">
+				and b_check_bill.ex_jqm8 = #{exJqm8}
+			</if>
+			<if test="ltlsnj9 != null and ltlsnj9 != ''">
+				and b_check_bill.ltlsnj9 = #{ltlsnj9}
+			</if>
+			<if test="exLtlsnj9 != null and exLtlsnj9 != ''">
+				and b_check_bill.ex_ltlsnj9 = #{exLtlsnj9}
+			</if>
+			<if test="dealLtlsnj89 != null and dealLtlsnj89 != ''">
+				and b_check_bill.deal_ltlsnj89 = #{dealLtlsnj89}
+			</if>
+			<if test="zqscp10 != null and zqscp10 != ''">
+				and b_check_bill.zqscp10 = #{zqscp10}
+			</if>
+			<if test="yqscp11 != null and yqscp11 != ''">
+				and b_check_bill.yqscp11 = #{yqscp11}
+			</if>
+			<if test="zhscp12 != null and zhscp12 != ''">
+				and b_check_bill.zhscp12 = #{zhscp12}
+			</if>
+			<if test="yhscp13 != null and yhscp13 != ''">
+				and b_check_bill.yhscp13 = #{yhscp13}
+			</if>
+			<if test="zqscpa14 != null and zqscpa14 != ''">
+				and b_check_bill.zqscpa14 = #{zqscpa14}
+			</if>
+			<if test="yqscpa15 != null and yqscpa15 != ''">
+				and b_check_bill.yqscpa15 = #{yqscpa15}
+			</if>
+			<if test="zhscpa16 != null and zhscpa16 != ''">
+				and b_check_bill.zhscpa16 = #{zhscpa16}
+			</if>
+			<if test="yhscpa17 != null and yhscpa17 != ''">
+				and b_check_bill.yhscpa17 = #{yhscpa17}
+			</if>
+			<if test="dealQhzysppa14151617 != null and dealQhzysppa14151617 != ''">
+				and b_check_bill.deal_qhzysppa14151617 = #{dealQhzysppa14151617}
+			</if>
+			<if test="zdlhsl18 != null and zdlhsl18 != ''">
+				and b_check_bill.zdlhsl18 = #{zdlhsl18}
+			</if>
+			<if test="dealZdlhsl18 != null and dealZdlhsl18 != ''">
+				and b_check_bill.deal_zdlhsl18 = #{dealZdlhsl18}
+			</if>
+			<if test="ktyw19 != null and ktyw19 != ''">
+				and b_check_bill.ktyw19 = #{ktyw19}
+			</if>
+			<if test="exKtyw19 != null and exKtyw19 != ''">
+				and b_check_bill.ex_ktyw19 = #{exKtyw19}
+			</if>
+			<if test="ktzl20 != null and ktzl20 != ''">
+				and b_check_bill.ktzl20 = #{ktzl20}
+			</if>
+			<if test="exKtzl20 != null and exKtzl20 != ''">
+				and b_check_bill.ex_ktzl20 = #{exKtzl20}
+			</if>
+			<if test="ktwd21 != null and ktwd21 != ''">
+				and b_check_bill.ktwd21 = #{ktwd21}
+			</if>
+			<if test="exKtwd21 != null and exKtwd21 != ''">
+				and b_check_bill.ex_ktwd21 = #{exKtwd21}
+			</if>
+			<if test="ktlx22 != null and ktlx22 != ''">
+				and b_check_bill.ktlx22 = #{ktlx22}
+			</if>
+			<if test="exKtlx22 != null and exKtlx22 != ''">
+				and b_check_bill.ex_ktlx22 = #{exKtlx22}
+			</if>
+			<if test="ktgzyf23 != null and ktgzyf23 != ''">
+				and b_check_bill.ktgzyf23 = #{ktgzyf23}
+			</if>
+			<if test="dealKt19202122 != null and dealKt19202122 != ''">
+				and b_check_bill.deal_kt19202122 = #{dealKt19202122}
+			</if>
+			<if test="qclb24 != null and qclb24 != ''">
+				and b_check_bill.qclb24 = #{qclb24}
+			</if>
+			<if test="exQclb24 != null and exQclb24 != ''">
+				and b_check_bill.ex_qclb24 = #{exQclb24}
+			</if>
+			<if test="qcyx25 != null and qcyx25 != ''">
+				and b_check_bill.qcyx25 = #{qcyx25}
+			</if>
+			<if test="exQcyx25 != null and exQcyx25 != ''">
+				and b_check_bill.ex_qcyx25 = #{exQcyx25}
+			</if>
+			<if test="aqd26 != null and aqd26 != ''">
+				and b_check_bill.aqd26 = #{aqd26}
+			</if>
+			<if test="exAqd26 != null and exAqd26 != ''">
+				and b_check_bill.ex_aqd26 = #{exAqd26}
+			</if>
+			<if test="zks27 != null and zks27 != ''">
+				and b_check_bill.zks27 = #{zks27}
+			</if>
+			<if test="exZks27 != null and exZks27 != ''">
+				and b_check_bill.ex_zks27 = #{exZks27}
+			</if>
+			<if test="zdcc28 != null and zdcc28 != ''">
+				and b_check_bill.zdcc28 = #{zdcc28}
+			</if>
+			<if test="exZdcc28 != null and exZdcc28 != ''">
+				and b_check_bill.ex_zdcc28 = #{exZdcc28}
+			</if>
+			<if test="dealQclyazz2425262728 != null and dealQclyazz2425262728 != ''">
+				and b_check_bill.deal_qclyazz2425262728 = #{dealQclyazz2425262728}
+			</if>
+			<if test="xdcxn29 != null and xdcxn29 != ''">
+				and b_check_bill.xdcxn29 = #{xdcxn29}
+			</if>
+			<if test="fdyyw30 != null and fdyyw30 != ''">
+				and b_check_bill.fdyyw30 = #{fdyyw30}
+			</if>
+			<if test="hhsfsd31 != null and hhsfsd31 != ''">
+				and b_check_bill.hhsfsd31 = #{hhsfsd31}
+			</if>
+			<if test="exHhsfsd31 != null and exHhsfsd31 != ''">
+				and b_check_bill.ex_hhsfsd31 = #{exHhsfsd31}
+			</if>
+			<if test="fdjyw32 != null and fdjyw32 != ''">
+				and b_check_bill.fdjyw32 = #{fdjyw32}
+			</if>
+			<if test="exFdjyw32 != null and exFdjyw32 != ''">
+				and b_check_bill.ex_fdjyw32 = #{exFdjyw32}
+			</if>
+			<if test="dealXfhf29303132 != null and dealXfhf29303132 != ''">
+				and b_check_bill.deal_xfhf29303132 = #{dealXfhf29303132}
+			</if>
+			<if test="zxyywgl33 != null and zxyywgl33 != ''">
+				and b_check_bill.zxyywgl33 = #{zxyywgl33}
+			</if>
+			<if test="exZxyywgl33 != null and exZxyywgl33 != ''">
+				and b_check_bill.ex_zxyywgl33 = #{exZxyywgl33}
+			</if>
+			<if test="fdjpdgl34 != null and fdjpdgl34 != ''">
+				and b_check_bill.fdjpdgl34 = #{fdjpdgl34}
+			</if>
+			<if test="exFdjpdgl34 != null and exFdjpdgl34 != ''">
+				and b_check_bill.ex_fdjpdgl34 = #{exFdjpdgl34}
+			</if>
+			<if test="dealZxypd3334 != null and dealZxypd3334 != ''">
+				and b_check_bill.deal_zxypd3334 = #{dealZxypd3334}
+			</if>
+			<if test="jzq35 != null and jzq35 != ''">
+				and b_check_bill.jzq35 = #{jzq35}
+			</if>
+			<if test="exJzq35 != null and exJzq35 != ''">
+				and b_check_bill.ex_jzq35 = #{exJzq35}
+			</if>
+			<if test="ztzc36 != null and ztzc36 != ''">
+				and b_check_bill.ztzc36 = #{ztzc36}
+			</if>
+			<if test="exZtzc36 != null and exZtzc36 != ''">
+				and b_check_bill.ex_ztzc36 = #{exZtzc36}
+			</if>
+			<if test="dpj37 != null and dpj37 != ''">
+				and b_check_bill.dpj37 = #{dpj37}
+			</if>
+			<if test="exDpj37 != null and exDpj37 != ''">
+				and b_check_bill.ex_dpj37 = #{exDpj37}
+			</if>
+			<if test="cdzfct38 != null and cdzfct38 != ''">
+				and b_check_bill.cdzfct38 = #{cdzfct38}
+			</if>
+			<if test="exCdzfct38 != null and exCdzfct38 != ''">
+				and b_check_bill.ex_cdzfct38 = #{exCdzfct38}
+			</if>
+			<if test="wxjaqt39 != null and wxjaqt39 != ''">
+				and b_check_bill.wxjaqt39 = #{wxjaqt39}
+			</if>
+			<if test="exWxjaqt39 != null and exWxjaqt39 != ''">
+				and b_check_bill.ex_wxjaqt39 = #{exWxjaqt39}
+			</if>
+			<if test="bsxzj40 != null and bsxzj40 != ''">
+				and b_check_bill.bsxzj40 = #{bsxzj40}
+			</if>
+			<if test="exBsxzj40 != null and exBsxzj40 != ''">
+				and b_check_bill.ex_bsxzj40 = #{exBsxzj40}
+			</if>
+			<if test="dealJzdcwb353637383940 != null and dealJzdcwb353637383940 != ''">
+				and b_check_bill.deal_jzdcwb353637383940 = #{dealJzdcwb353637383940}
+			</if>
+			<if test="cndg41 != null and cndg41 != ''">
+				and b_check_bill.cndg41 = #{cndg41}
+			</if>
+			<if test="exCndg41 != null and exCndg41 != ''">
+				and b_check_bill.ex_cndg41 = #{exCndg41}
+			</if>
+			<if test="cwdg42 != null and cwdg42 != ''">
+				and b_check_bill.cwdg42 = #{cwdg42}
+			</if>
+			<if test="exCwdg42 != null and exCwdg42 != ''">
+				and b_check_bill.ex_cwdg42 = #{exCwdg42}
+			</if>
+			<if test="ybpgzd43 != null and ybpgzd43 != ''">
+				and b_check_bill.ybpgzd43 = #{ybpgzd43}
+			</if>
+			<if test="exYbpgzd43 != null and exYbpgzd43 != ''">
+				and b_check_bill.ex_ybpgzd43 = #{exYbpgzd43}
+			</if>
+			<if test="dealCnwybp414243 != null and dealCnwybp414243 != ''">
+				and b_check_bill.deal_cnwybp414243 = #{dealCnwybp414243}
+			</if>
+			<if test="blqxy44 != null and blqxy44 != ''">
+				and b_check_bill.blqxy44 = #{blqxy44}
+			</if>
+			<if test="recheck != null and recheck != ''">
+				and b_check_bill.recheck = #{recheck}
+			</if>
+			<if test="suggest != null and suggest != ''">
+				and b_check_bill.suggest = #{suggest}
+			</if>
+		</trim>
+	</sql>
+	
+		<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_check_bill.id = #{id}
+			</if>
+			<if test="companyId != null and companyId != ''">
+				and b_check_bill.company_id like CONCAT('%',#{companyId},'%')
+			</if>
+			<if test="billSn != null and billSn != ''">
+				and b_check_bill.bill_sn like CONCAT('%',#{billSn},'%')
+			</if>
+			<if test="customerName != null and customerName != ''">
+				and b_check_bill.customer_name like CONCAT('%',#{customerName},'%')
+			</if>
+			<if test="telphone != null and telphone != ''">
+				and b_check_bill.telphone like CONCAT('%',#{telphone},'%')
+			</if>
+			<if test="license != null and license != ''">
+				and b_check_bill.license like CONCAT('%',#{license},'%')
+			</if>
+			<if test="serviceCode != null and serviceCode != ''">
+				and b_check_bill.service_code like CONCAT('%',#{serviceCode},'%')
+			</if>
+			<if test="modelId3 != null and modelId3 != ''">
+				and b_check_bill.model_id3 like CONCAT('%',#{modelId3},'%')
+			</if>
+			<if test="modelId2 != null and modelId2 != ''">
+				and b_check_bill.model_id2 like CONCAT('%',#{modelId2},'%')
+			</if>
+			<if test="modelId != null and modelId != ''">
+				and b_check_bill.model_id like CONCAT('%',#{modelId},'%')
+			</if>
+			<if test="fullModelName != null and fullModelName != ''">
+				and b_check_bill.full_model_name like CONCAT('%',#{fullModelName},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_check_bill.create_date like CONCAT('%',#{createDate},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_check_bill.modify_date like CONCAT('%',#{modifyDate},'%')
+			</if>
+			<if test="zqltw1 != null and zqltw1 != ''">
+				and b_check_bill.zqltw1 like CONCAT('%',#{zqltw1},'%')
+			</if>
+			<if test="yqltw1 != null and yqltw1 != ''">
+				and b_check_bill.yqltw1 like CONCAT('%',#{yqltw1},'%')
+			</if>
+			<if test="zhltw2 != null and zhltw2 != ''">
+				and b_check_bill.zhltw2 like CONCAT('%',#{zhltw2},'%')
+			</if>
+			<if test="yhltw2 != null and yhltw2 != ''">
+				and b_check_bill.yhltw2 like CONCAT('%',#{yhltw2},'%')
+			</if>
+			<if test="zqlty3 != null and zqlty3 != ''">
+				and b_check_bill.zqlty3 like CONCAT('%',#{zqlty3},'%')
+			</if>
+			<if test="yqlty4 != null and yqlty4 != ''">
+				and b_check_bill.yqlty4 like CONCAT('%',#{yqlty4},'%')
+			</if>
+			<if test="zhlty5 != null and zhlty5 != ''">
+				and b_check_bill.zhlty5 like CONCAT('%',#{zhlty5},'%')
+			</if>
+			<if test="yhlty6 != null and yhlty6 != ''">
+				and b_check_bill.yhlty6 like CONCAT('%',#{yhlty6},'%')
+			</if>
+			<if test="exZyqhltty34567 != null and exZyqhltty34567 != ''">
+				and b_check_bill.ex_zyqhltty34567 like CONCAT('%',#{exZyqhltty34567},'%')
+			</if>
+			<if test="dealZyqhltty34567 != null and dealZyqhltty34567 != ''">
+				and b_check_bill.deal_zyqhltty34567 like CONCAT('%',#{dealZyqhltty34567},'%')
+			</if>
+			<if test="jqm8 != null and jqm8 != ''">
+				and b_check_bill.jqm8 like CONCAT('%',#{jqm8},'%')
+			</if>
+			<if test="exJqm8 != null and exJqm8 != ''">
+				and b_check_bill.ex_jqm8 like CONCAT('%',#{exJqm8},'%')
+			</if>
+			<if test="ltlsnj9 != null and ltlsnj9 != ''">
+				and b_check_bill.ltlsnj9 like CONCAT('%',#{ltlsnj9},'%')
+			</if>
+			<if test="exLtlsnj9 != null and exLtlsnj9 != ''">
+				and b_check_bill.ex_ltlsnj9 like CONCAT('%',#{exLtlsnj9},'%')
+			</if>
+			<if test="dealLtlsnj89 != null and dealLtlsnj89 != ''">
+				and b_check_bill.deal_ltlsnj89 like CONCAT('%',#{dealLtlsnj89},'%')
+			</if>
+			<if test="zqscp10 != null and zqscp10 != ''">
+				and b_check_bill.zqscp10 like CONCAT('%',#{zqscp10},'%')
+			</if>
+			<if test="yqscp11 != null and yqscp11 != ''">
+				and b_check_bill.yqscp11 like CONCAT('%',#{yqscp11},'%')
+			</if>
+			<if test="zhscp12 != null and zhscp12 != ''">
+				and b_check_bill.zhscp12 like CONCAT('%',#{zhscp12},'%')
+			</if>
+			<if test="yhscp13 != null and yhscp13 != ''">
+				and b_check_bill.yhscp13 like CONCAT('%',#{yhscp13},'%')
+			</if>
+			<if test="zqscpa14 != null and zqscpa14 != ''">
+				and b_check_bill.zqscpa14 like CONCAT('%',#{zqscpa14},'%')
+			</if>
+			<if test="yqscpa15 != null and yqscpa15 != ''">
+				and b_check_bill.yqscpa15 like CONCAT('%',#{yqscpa15},'%')
+			</if>
+			<if test="zhscpa16 != null and zhscpa16 != ''">
+				and b_check_bill.zhscpa16 like CONCAT('%',#{zhscpa16},'%')
+			</if>
+			<if test="yhscpa17 != null and yhscpa17 != ''">
+				and b_check_bill.yhscpa17 like CONCAT('%',#{yhscpa17},'%')
+			</if>
+			<if test="dealQhzysppa14151617 != null and dealQhzysppa14151617 != ''">
+				and b_check_bill.deal_qhzysppa14151617 like CONCAT('%',#{dealQhzysppa14151617},'%')
+			</if>
+			<if test="zdlhsl18 != null and zdlhsl18 != ''">
+				and b_check_bill.zdlhsl18 like CONCAT('%',#{zdlhsl18},'%')
+			</if>
+			<if test="dealZdlhsl18 != null and dealZdlhsl18 != ''">
+				and b_check_bill.deal_zdlhsl18 like CONCAT('%',#{dealZdlhsl18},'%')
+			</if>
+			<if test="ktyw19 != null and ktyw19 != ''">
+				and b_check_bill.ktyw19 like CONCAT('%',#{ktyw19},'%')
+			</if>
+			<if test="exKtyw19 != null and exKtyw19 != ''">
+				and b_check_bill.ex_ktyw19 like CONCAT('%',#{exKtyw19},'%')
+			</if>
+			<if test="ktzl20 != null and ktzl20 != ''">
+				and b_check_bill.ktzl20 like CONCAT('%',#{ktzl20},'%')
+			</if>
+			<if test="exKtzl20 != null and exKtzl20 != ''">
+				and b_check_bill.ex_ktzl20 like CONCAT('%',#{exKtzl20},'%')
+			</if>
+			<if test="ktwd21 != null and ktwd21 != ''">
+				and b_check_bill.ktwd21 like CONCAT('%',#{ktwd21},'%')
+			</if>
+			<if test="exKtwd21 != null and exKtwd21 != ''">
+				and b_check_bill.ex_ktwd21 like CONCAT('%',#{exKtwd21},'%')
+			</if>
+			<if test="ktlx22 != null and ktlx22 != ''">
+				and b_check_bill.ktlx22 like CONCAT('%',#{ktlx22},'%')
+			</if>
+			<if test="exKtlx22 != null and exKtlx22 != ''">
+				and b_check_bill.ex_ktlx22 like CONCAT('%',#{exKtlx22},'%')
+			</if>
+			<if test="ktgzyf23 != null and ktgzyf23 != ''">
+				and b_check_bill.ktgzyf23 like CONCAT('%',#{ktgzyf23},'%')
+			</if>
+			<if test="dealKt19202122 != null and dealKt19202122 != ''">
+				and b_check_bill.deal_kt19202122 like CONCAT('%',#{dealKt19202122},'%')
+			</if>
+			<if test="qclb24 != null and qclb24 != ''">
+				and b_check_bill.qclb24 like CONCAT('%',#{qclb24},'%')
+			</if>
+			<if test="exQclb24 != null and exQclb24 != ''">
+				and b_check_bill.ex_qclb24 like CONCAT('%',#{exQclb24},'%')
+			</if>
+			<if test="qcyx25 != null and qcyx25 != ''">
+				and b_check_bill.qcyx25 like CONCAT('%',#{qcyx25},'%')
+			</if>
+			<if test="exQcyx25 != null and exQcyx25 != ''">
+				and b_check_bill.ex_qcyx25 like CONCAT('%',#{exQcyx25},'%')
+			</if>
+			<if test="aqd26 != null and aqd26 != ''">
+				and b_check_bill.aqd26 like CONCAT('%',#{aqd26},'%')
+			</if>
+			<if test="exAqd26 != null and exAqd26 != ''">
+				and b_check_bill.ex_aqd26 like CONCAT('%',#{exAqd26},'%')
+			</if>
+			<if test="zks27 != null and zks27 != ''">
+				and b_check_bill.zks27 like CONCAT('%',#{zks27},'%')
+			</if>
+			<if test="exZks27 != null and exZks27 != ''">
+				and b_check_bill.ex_zks27 like CONCAT('%',#{exZks27},'%')
+			</if>
+			<if test="zdcc28 != null and zdcc28 != ''">
+				and b_check_bill.zdcc28 like CONCAT('%',#{zdcc28},'%')
+			</if>
+			<if test="exZdcc28 != null and exZdcc28 != ''">
+				and b_check_bill.ex_zdcc28 like CONCAT('%',#{exZdcc28},'%')
+			</if>
+			<if test="dealQclyazz2425262728 != null and dealQclyazz2425262728 != ''">
+				and b_check_bill.deal_qclyazz2425262728 like CONCAT('%',#{dealQclyazz2425262728},'%')
+			</if>
+			<if test="xdcxn29 != null and xdcxn29 != ''">
+				and b_check_bill.xdcxn29 like CONCAT('%',#{xdcxn29},'%')
+			</if>
+			<if test="fdyyw30 != null and fdyyw30 != ''">
+				and b_check_bill.fdyyw30 like CONCAT('%',#{fdyyw30},'%')
+			</if>
+			<if test="hhsfsd31 != null and hhsfsd31 != ''">
+				and b_check_bill.hhsfsd31 like CONCAT('%',#{hhsfsd31},'%')
+			</if>
+			<if test="exHhsfsd31 != null and exHhsfsd31 != ''">
+				and b_check_bill.ex_hhsfsd31 like CONCAT('%',#{exHhsfsd31},'%')
+			</if>
+			<if test="fdjyw32 != null and fdjyw32 != ''">
+				and b_check_bill.fdjyw32 like CONCAT('%',#{fdjyw32},'%')
+			</if>
+			<if test="exFdjyw32 != null and exFdjyw32 != ''">
+				and b_check_bill.ex_fdjyw32 like CONCAT('%',#{exFdjyw32},'%')
+			</if>
+			<if test="dealXfhf29303132 != null and dealXfhf29303132 != ''">
+				and b_check_bill.deal_xfhf29303132 like CONCAT('%',#{dealXfhf29303132},'%')
+			</if>
+			<if test="zxyywgl33 != null and zxyywgl33 != ''">
+				and b_check_bill.zxyywgl33 like CONCAT('%',#{zxyywgl33},'%')
+			</if>
+			<if test="exZxyywgl33 != null and exZxyywgl33 != ''">
+				and b_check_bill.ex_zxyywgl33 like CONCAT('%',#{exZxyywgl33},'%')
+			</if>
+			<if test="fdjpdgl34 != null and fdjpdgl34 != ''">
+				and b_check_bill.fdjpdgl34 like CONCAT('%',#{fdjpdgl34},'%')
+			</if>
+			<if test="exFdjpdgl34 != null and exFdjpdgl34 != ''">
+				and b_check_bill.ex_fdjpdgl34 like CONCAT('%',#{exFdjpdgl34},'%')
+			</if>
+			<if test="dealZxypd3334 != null and dealZxypd3334 != ''">
+				and b_check_bill.deal_zxypd3334 like CONCAT('%',#{dealZxypd3334},'%')
+			</if>
+			<if test="jzq35 != null and jzq35 != ''">
+				and b_check_bill.jzq35 like CONCAT('%',#{jzq35},'%')
+			</if>
+			<if test="exJzq35 != null and exJzq35 != ''">
+				and b_check_bill.ex_jzq35 like CONCAT('%',#{exJzq35},'%')
+			</if>
+			<if test="ztzc36 != null and ztzc36 != ''">
+				and b_check_bill.ztzc36 like CONCAT('%',#{ztzc36},'%')
+			</if>
+			<if test="exZtzc36 != null and exZtzc36 != ''">
+				and b_check_bill.ex_ztzc36 like CONCAT('%',#{exZtzc36},'%')
+			</if>
+			<if test="dpj37 != null and dpj37 != ''">
+				and b_check_bill.dpj37 like CONCAT('%',#{dpj37},'%')
+			</if>
+			<if test="exDpj37 != null and exDpj37 != ''">
+				and b_check_bill.ex_dpj37 like CONCAT('%',#{exDpj37},'%')
+			</if>
+			<if test="cdzfct38 != null and cdzfct38 != ''">
+				and b_check_bill.cdzfct38 like CONCAT('%',#{cdzfct38},'%')
+			</if>
+			<if test="exCdzfct38 != null and exCdzfct38 != ''">
+				and b_check_bill.ex_cdzfct38 like CONCAT('%',#{exCdzfct38},'%')
+			</if>
+			<if test="wxjaqt39 != null and wxjaqt39 != ''">
+				and b_check_bill.wxjaqt39 like CONCAT('%',#{wxjaqt39},'%')
+			</if>
+			<if test="exWxjaqt39 != null and exWxjaqt39 != ''">
+				and b_check_bill.ex_wxjaqt39 like CONCAT('%',#{exWxjaqt39},'%')
+			</if>
+			<if test="bsxzj40 != null and bsxzj40 != ''">
+				and b_check_bill.bsxzj40 like CONCAT('%',#{bsxzj40},'%')
+			</if>
+			<if test="exBsxzj40 != null and exBsxzj40 != ''">
+				and b_check_bill.ex_bsxzj40 like CONCAT('%',#{exBsxzj40},'%')
+			</if>
+			<if test="dealJzdcwb353637383940 != null and dealJzdcwb353637383940 != ''">
+				and b_check_bill.deal_jzdcwb353637383940 like CONCAT('%',#{dealJzdcwb353637383940},'%')
+			</if>
+			<if test="cndg41 != null and cndg41 != ''">
+				and b_check_bill.cndg41 like CONCAT('%',#{cndg41},'%')
+			</if>
+			<if test="exCndg41 != null and exCndg41 != ''">
+				and b_check_bill.ex_cndg41 like CONCAT('%',#{exCndg41},'%')
+			</if>
+			<if test="cwdg42 != null and cwdg42 != ''">
+				and b_check_bill.cwdg42 like CONCAT('%',#{cwdg42},'%')
+			</if>
+			<if test="exCwdg42 != null and exCwdg42 != ''">
+				and b_check_bill.ex_cwdg42 like CONCAT('%',#{exCwdg42},'%')
+			</if>
+			<if test="ybpgzd43 != null and ybpgzd43 != ''">
+				and b_check_bill.ybpgzd43 like CONCAT('%',#{ybpgzd43},'%')
+			</if>
+			<if test="exYbpgzd43 != null and exYbpgzd43 != ''">
+				and b_check_bill.ex_ybpgzd43 like CONCAT('%',#{exYbpgzd43},'%')
+			</if>
+			<if test="dealCnwybp414243 != null and dealCnwybp414243 != ''">
+				and b_check_bill.deal_cnwybp414243 like CONCAT('%',#{dealCnwybp414243},'%')
+			</if>
+			<if test="blqxy44 != null and blqxy44 != ''">
+				and b_check_bill.blqxy44 like CONCAT('%',#{blqxy44},'%')
+			</if>
+			<if test="recheck != null and recheck != ''">
+				and b_check_bill.recheck like CONCAT('%',#{recheck},'%')
+			</if>
+			<if test="suggest != null and suggest != ''">
+				and b_check_bill.suggest like CONCAT('%',#{suggest},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into b_check_bill(id,company_id,bill_sn,customer_name,telphone,license,service_code,model_id3,model_id2,model_id,full_model_name,create_date,modify_date,zqltw1,yqltw1,zhltw2,yhltw2,zqlty3,yqlty4,zhlty5,yhlty6,ex_zyqhltty34567,deal_zyqhltty34567,jqm8,ex_jqm8,ltlsnj9,ex_ltlsnj9,deal_ltlsnj89,zqscp10,yqscp11,zhscp12,yhscp13,zqscpa14,yqscpa15,zhscpa16,yhscpa17,deal_qhzysppa14151617,zdlhsl18,deal_zdlhsl18,ktyw19,ex_ktyw19,ktzl20,ex_ktzl20,ktwd21,ex_ktwd21,ktlx22,ex_ktlx22,ktgzyf23,deal_kt19202122,qclb24,ex_qclb24,qcyx25,ex_qcyx25,aqd26,ex_aqd26,zks27,ex_zks27,zdcc28,ex_zdcc28,deal_qclyazz2425262728,xdcxn29,fdyyw30,hhsfsd31,ex_hhsfsd31,fdjyw32,ex_fdjyw32,deal_xfhf29303132,zxyywgl33,ex_zxyywgl33,fdjpdgl34,ex_fdjpdgl34,deal_zxypd3334,jzq35,ex_jzq35,ztzc36,ex_ztzc36,dpj37,ex_dpj37,cdzfct38,ex_cdzfct38,wxjaqt39,ex_wxjaqt39,bsxzj40,ex_bsxzj40,deal_jzdcwb353637383940,cndg41,ex_cndg41,cwdg42,ex_cwdg42,ybpgzd43,ex_ybpgzd43,deal_cnwybp414243,blqxy44,recheck,suggest)
+ values(#{id},#{companyId},#{billSn},#{customerName},#{telphone},#{license},#{serviceCode},#{modelId3},#{modelId2},#{modelId},#{fullModelName},#{createDate},#{modifyDate},#{zqltw1},#{yqltw1},#{zhltw2},#{yhltw2},#{zqlty3},#{yqlty4},#{zhlty5},#{yhlty6},#{exZyqhltty34567},#{dealZyqhltty34567},#{jqm8},#{exJqm8},#{ltlsnj9},#{exLtlsnj9},#{dealLtlsnj89},#{zqscp10},#{yqscp11},#{zhscp12},#{yhscp13},#{zqscpa14},#{yqscpa15},#{zhscpa16},#{yhscpa17},#{dealQhzysppa14151617},#{zdlhsl18},#{dealZdlhsl18},#{ktyw19},#{exKtyw19},#{ktzl20},#{exKtzl20},#{ktwd21},#{exKtwd21},#{ktlx22},#{exKtlx22},#{ktgzyf23},#{dealKt19202122},#{qclb24},#{exQclb24},#{qcyx25},#{exQcyx25},#{aqd26},#{exAqd26},#{zks27},#{exZks27},#{zdcc28},#{exZdcc28},#{dealQclyazz2425262728},#{xdcxn29},#{fdyyw30},#{hhsfsd31},#{exHhsfsd31},#{fdjyw32},#{exFdjyw32},#{dealXfhf29303132},#{zxyywgl33},#{exZxyywgl33},#{fdjpdgl34},#{exFdjpdgl34},#{dealZxypd3334},#{jzq35},#{exJzq35},#{ztzc36},#{exZtzc36},#{dpj37},#{exDpj37},#{cdzfct38},#{exCdzfct38},#{wxjaqt39},#{exWxjaqt39},#{bsxzj40},#{exBsxzj40},#{dealJzdcwb353637383940},#{cndg41},#{exCndg41},#{cwdg42},#{exCwdg42},#{ybpgzd43},#{exYbpgzd43},#{dealCnwybp414243},#{blqxy44},#{recheck},#{suggest})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update b_check_bill set 
+	<trim  suffixOverrides="," >
+	<if test="companyId != null  ">
+		company_id=#{companyId},
+	</if>
+	<if test="billSn != null  ">
+		bill_sn=#{billSn},
+	</if>
+	<if test="customerName != null  ">
+		customer_name=#{customerName},
+	</if>
+	<if test="telphone != null  ">
+		telphone=#{telphone},
+	</if>
+	<if test="license != null  ">
+		license=#{license},
+	</if>
+	<if test="serviceCode != null  ">
+		service_code=#{serviceCode},
+	</if>
+	<if test="modelId3 != null  ">
+		model_id3=#{modelId3},
+	</if>
+	<if test="modelId2 != null  ">
+		model_id2=#{modelId2},
+	</if>
+	<if test="modelId != null  ">
+		model_id=#{modelId},
+	</if>
+	<if test="fullModelName != null  ">
+		full_model_name=#{fullModelName},
+	</if>
+	<if test="createDate != null  ">
+		create_date=#{createDate},
+	</if>
+	<if test="modifyDate != null  ">
+		modify_date=#{modifyDate},
+	</if>
+	<if test="zqltw1 != null  ">
+		zqltw1=#{zqltw1},
+	</if>
+	<if test="yqltw1 != null  ">
+		yqltw1=#{yqltw1},
+	</if>
+	<if test="zhltw2 != null  ">
+		zhltw2=#{zhltw2},
+	</if>
+	<if test="yhltw2 != null  ">
+		yhltw2=#{yhltw2},
+	</if>
+	<if test="zqlty3 != null  ">
+		zqlty3=#{zqlty3},
+	</if>
+	<if test="yqlty4 != null  ">
+		yqlty4=#{yqlty4},
+	</if>
+	<if test="zhlty5 != null  ">
+		zhlty5=#{zhlty5},
+	</if>
+	<if test="yhlty6 != null  ">
+		yhlty6=#{yhlty6},
+	</if>
+	<if test="exZyqhltty34567 != null  ">
+		ex_zyqhltty34567=#{exZyqhltty34567},
+	</if>
+	<if test="dealZyqhltty34567 != null  ">
+		deal_zyqhltty34567=#{dealZyqhltty34567},
+	</if>
+	<if test="jqm8 != null  ">
+		jqm8=#{jqm8},
+	</if>
+	<if test="exJqm8 != null  ">
+		ex_jqm8=#{exJqm8},
+	</if>
+	<if test="ltlsnj9 != null  ">
+		ltlsnj9=#{ltlsnj9},
+	</if>
+	<if test="exLtlsnj9 != null  ">
+		ex_ltlsnj9=#{exLtlsnj9},
+	</if>
+	<if test="dealLtlsnj89 != null  ">
+		deal_ltlsnj89=#{dealLtlsnj89},
+	</if>
+	<if test="zqscp10 != null  ">
+		zqscp10=#{zqscp10},
+	</if>
+	<if test="yqscp11 != null  ">
+		yqscp11=#{yqscp11},
+	</if>
+	<if test="zhscp12 != null  ">
+		zhscp12=#{zhscp12},
+	</if>
+	<if test="yhscp13 != null  ">
+		yhscp13=#{yhscp13},
+	</if>
+	<if test="zqscpa14 != null  ">
+		zqscpa14=#{zqscpa14},
+	</if>
+	<if test="yqscpa15 != null  ">
+		yqscpa15=#{yqscpa15},
+	</if>
+	<if test="zhscpa16 != null  ">
+		zhscpa16=#{zhscpa16},
+	</if>
+	<if test="yhscpa17 != null  ">
+		yhscpa17=#{yhscpa17},
+	</if>
+	<if test="dealQhzysppa14151617 != null  ">
+		deal_qhzysppa14151617=#{dealQhzysppa14151617},
+	</if>
+	<if test="zdlhsl18 != null  ">
+		zdlhsl18=#{zdlhsl18},
+	</if>
+	<if test="dealZdlhsl18 != null  ">
+		deal_zdlhsl18=#{dealZdlhsl18},
+	</if>
+	<if test="ktyw19 != null  ">
+		ktyw19=#{ktyw19},
+	</if>
+	<if test="exKtyw19 != null  ">
+		ex_ktyw19=#{exKtyw19},
+	</if>
+	<if test="ktzl20 != null  ">
+		ktzl20=#{ktzl20},
+	</if>
+	<if test="exKtzl20 != null  ">
+		ex_ktzl20=#{exKtzl20},
+	</if>
+	<if test="ktwd21 != null  ">
+		ktwd21=#{ktwd21},
+	</if>
+	<if test="exKtwd21 != null  ">
+		ex_ktwd21=#{exKtwd21},
+	</if>
+	<if test="ktlx22 != null  ">
+		ktlx22=#{ktlx22},
+	</if>
+	<if test="exKtlx22 != null  ">
+		ex_ktlx22=#{exKtlx22},
+	</if>
+	<if test="ktgzyf23 != null  ">
+		ktgzyf23=#{ktgzyf23},
+	</if>
+	<if test="dealKt19202122 != null  ">
+		deal_kt19202122=#{dealKt19202122},
+	</if>
+	<if test="qclb24 != null  ">
+		qclb24=#{qclb24},
+	</if>
+	<if test="exQclb24 != null  ">
+		ex_qclb24=#{exQclb24},
+	</if>
+	<if test="qcyx25 != null  ">
+		qcyx25=#{qcyx25},
+	</if>
+	<if test="exQcyx25 != null  ">
+		ex_qcyx25=#{exQcyx25},
+	</if>
+	<if test="aqd26 != null  ">
+		aqd26=#{aqd26},
+	</if>
+	<if test="exAqd26 != null  ">
+		ex_aqd26=#{exAqd26},
+	</if>
+	<if test="zks27 != null  ">
+		zks27=#{zks27},
+	</if>
+	<if test="exZks27 != null  ">
+		ex_zks27=#{exZks27},
+	</if>
+	<if test="zdcc28 != null  ">
+		zdcc28=#{zdcc28},
+	</if>
+	<if test="exZdcc28 != null  ">
+		ex_zdcc28=#{exZdcc28},
+	</if>
+	<if test="dealQclyazz2425262728 != null  ">
+		deal_qclyazz2425262728=#{dealQclyazz2425262728},
+	</if>
+	<if test="xdcxn29 != null  ">
+		xdcxn29=#{xdcxn29},
+	</if>
+	<if test="fdyyw30 != null  ">
+		fdyyw30=#{fdyyw30},
+	</if>
+	<if test="hhsfsd31 != null  ">
+		hhsfsd31=#{hhsfsd31},
+	</if>
+	<if test="exHhsfsd31 != null  ">
+		ex_hhsfsd31=#{exHhsfsd31},
+	</if>
+	<if test="fdjyw32 != null  ">
+		fdjyw32=#{fdjyw32},
+	</if>
+	<if test="exFdjyw32 != null  ">
+		ex_fdjyw32=#{exFdjyw32},
+	</if>
+	<if test="dealXfhf29303132 != null  ">
+		deal_xfhf29303132=#{dealXfhf29303132},
+	</if>
+	<if test="zxyywgl33 != null  ">
+		zxyywgl33=#{zxyywgl33},
+	</if>
+	<if test="exZxyywgl33 != null  ">
+		ex_zxyywgl33=#{exZxyywgl33},
+	</if>
+	<if test="fdjpdgl34 != null  ">
+		fdjpdgl34=#{fdjpdgl34},
+	</if>
+	<if test="exFdjpdgl34 != null  ">
+		ex_fdjpdgl34=#{exFdjpdgl34},
+	</if>
+	<if test="dealZxypd3334 != null  ">
+		deal_zxypd3334=#{dealZxypd3334},
+	</if>
+	<if test="jzq35 != null  ">
+		jzq35=#{jzq35},
+	</if>
+	<if test="exJzq35 != null  ">
+		ex_jzq35=#{exJzq35},
+	</if>
+	<if test="ztzc36 != null  ">
+		ztzc36=#{ztzc36},
+	</if>
+	<if test="exZtzc36 != null  ">
+		ex_ztzc36=#{exZtzc36},
+	</if>
+	<if test="dpj37 != null  ">
+		dpj37=#{dpj37},
+	</if>
+	<if test="exDpj37 != null  ">
+		ex_dpj37=#{exDpj37},
+	</if>
+	<if test="cdzfct38 != null  ">
+		cdzfct38=#{cdzfct38},
+	</if>
+	<if test="exCdzfct38 != null  ">
+		ex_cdzfct38=#{exCdzfct38},
+	</if>
+	<if test="wxjaqt39 != null  ">
+		wxjaqt39=#{wxjaqt39},
+	</if>
+	<if test="exWxjaqt39 != null  ">
+		ex_wxjaqt39=#{exWxjaqt39},
+	</if>
+	<if test="bsxzj40 != null  ">
+		bsxzj40=#{bsxzj40},
+	</if>
+	<if test="exBsxzj40 != null  ">
+		ex_bsxzj40=#{exBsxzj40},
+	</if>
+	<if test="dealJzdcwb353637383940 != null  ">
+		deal_jzdcwb353637383940=#{dealJzdcwb353637383940},
+	</if>
+	<if test="cndg41 != null  ">
+		cndg41=#{cndg41},
+	</if>
+	<if test="exCndg41 != null  ">
+		ex_cndg41=#{exCndg41},
+	</if>
+	<if test="cwdg42 != null  ">
+		cwdg42=#{cwdg42},
+	</if>
+	<if test="exCwdg42 != null  ">
+		ex_cwdg42=#{exCwdg42},
+	</if>
+	<if test="ybpgzd43 != null  ">
+		ybpgzd43=#{ybpgzd43},
+	</if>
+	<if test="exYbpgzd43 != null  ">
+		ex_ybpgzd43=#{exYbpgzd43},
+	</if>
+	<if test="dealCnwybp414243 != null  ">
+		deal_cnwybp414243=#{dealCnwybp414243},
+	</if>
+	<if test="blqxy44 != null  ">
+		blqxy44=#{blqxy44},
+	</if>
+	<if test="recheck != null  ">
+		recheck=#{recheck},
+	</if>
+	<if test="suggest != null  ">
+		suggest=#{suggest},
+	</if>
+	</trim> where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete 	 from b_check_bill where id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from b_check_bill where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_check_bill 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from b_check_bill 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_check_bill 
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition} 
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+</mapper>   

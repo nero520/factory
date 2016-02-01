@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.ActivityNewMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.ActivityNewEntity">
+		<result column="id" property="id" />
+		<result column="activity_sn" property="activitySn" />
+		<result column="activity_name" property="activityName" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="description" property="description" />
+		<result column="activity_scope" property="activityScope" />
+		<result column="person_limit" property="personLimit" />
+		<result column="activity_limit_state" property="activityLimitState" />
+		<result column="activity_limit_num" property="activityLimitNum" />
+		<result column="type" property="type" />
+		<result column="state" property="state" />
+		<result column="operator" property="operator" />
+		<result column="create_date" property="createDate" />
+		<result column="modify_date" property="modifyDate" />
+	</resultMap>
+
+	<!-- b_activity_new 字段 -->
+	<sql id="Column_List">
+		b_activity_new.id,b_activity_new.activity_sn,b_activity_new.activity_name,b_activity_new.start_date,b_activity_new.end_date,b_activity_new.description,b_activity_new.activity_scope,b_activity_new.person_limit,b_activity_new.activity_limit_state,b_activity_new.activity_limit_num,b_activity_new.type,b_activity_new.state,b_activity_new.operator,b_activity_new.create_date,b_activity_new.modify_date
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_activity_new.id = #{id}
+			</if>
+			<if test="activitySn != null and activitySn != ''">
+				and b_activity_new.activity_sn = #{activitySn}
+			</if>
+			<if test="activityName != null and activityName != ''">
+				and b_activity_new.activity_name = #{activityName}
+			</if>
+			<if test="startDate != null and startDate != ''">
+				and b_activity_new.start_date = #{startDate}
+			</if>
+			<if test="endDate != null and endDate != ''">
+				and b_activity_new.end_date = #{endDate}
+			</if>
+			<if test="description != null and description != ''">
+				and b_activity_new.description = #{description}
+			</if>
+			<if test="activityScope != null and activityScope != ''">
+				and b_activity_new.activity_scope = #{activityScope}
+			</if>
+			<if test="personLimit != null and personLimit != ''">
+				and b_activity_new.person_limit = #{personLimit}
+			</if>
+			<if test="activityLimitState != null and activityLimitState != ''">
+				and b_activity_new.activity_limit_state = #{activityLimitState}
+			</if>
+			<if test="activityLimitNum != null and activityLimitNum != ''">
+				and b_activity_new.activity_limit_num = #{activityLimitNum}
+			</if>
+			<if test="type != null and type != ''">
+				and b_activity_new.type = #{type}
+			</if>
+			<if test="state != null and state != ''">
+				<if test="state == -1">
+					and DATE_FORMAT(b_activity_new.start_date,'%Y-%m-%d') > DATE_FORMAT(#{nowDate},'%Y-%m-%d')
+					and b_activity_new.state = 1
+				</if>
+				<if test="state == 3">
+					and b_activity_new.state = 0
+				</if>
+				<if test="state == 1">
+					and DATE_FORMAT(#{nowDate},'%Y-%m-%d') between DATE_FORMAT(b_activity_new.start_date,'%Y-%m-%d') 
+						and DATE_FORMAT(b_activity_new.end_date,'%Y-%m-%d')
+					and b_activity_new.state = 1
+				</if>
+				<if test="state == 2">
+					and <![CDATA[ DATE_FORMAT(b_activity_new.end_date,'%Y-%m-%d') < DATE_FORMAT(#{nowDate},'%Y-%m-%d')]]>
+					and b_activity_new.state = 1
+				</if>
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_activity_new.operator = #{operator}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_activity_new.create_date = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_activity_new.modify_date = #{modifyDate}
+			</if>
+			<if test="afterDate != null and afterDate != ''">
+				and <![CDATA[ b_activity_new.end_date <= #{afterDate}]]>
+			</if>
+			<if test="beforeDate != null and beforeDate != ''">
+				and b_activity_new.start_date >= #{beforeDate}
+			</if>
+		</trim>
+	</sql>
+	
+		<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_activity_new.id = #{id}
+			</if>
+			<if test="activitySn != null and activitySn != ''">
+				and b_activity_new.activity_sn like CONCAT('%',#{activitySn},'%')
+			</if>
+			<if test="activityName != null and activityName != ''">
+				and b_activity_new.activity_name like CONCAT('%',#{activityName},'%')
+			</if>
+			<if test="startDate != null and startDate != ''">
+				and b_activity_new.start_date like CONCAT('%',#{startDate},'%')
+			</if>
+			<if test="endDate != null and endDate != ''">
+				and b_activity_new.end_date like CONCAT('%',#{endDate},'%')
+			</if>
+			<if test="description != null and description != ''">
+				and b_activity_new.description like CONCAT('%',#{description},'%')
+			</if>
+			<if test="activityScope != null and activityScope != ''">
+				and b_activity_new.activity_scope like CONCAT('%',#{activityScope},'%')
+			</if>
+			<if test="personLimit != null and personLimit != ''">
+				and b_activity_new.person_limit like CONCAT('%',#{personLimit},'%')
+			</if>
+			<if test="activityLimitState != null and activityLimitState != ''">
+				and b_activity_new.activity_limit_state like CONCAT('%',#{activityLimitState},'%')
+			</if>
+			<if test="activityLimitNum != null and activityLimitNum != ''">
+				and b_activity_new.activity_limit_num like CONCAT('%',#{activityLimitNum},'%')
+			</if>
+			<if test="type != null and type != ''">
+				and b_activity_new.type like CONCAT('%',#{type},'%')
+			</if>
+			<if test="state != null and state != ''">
+				and b_activity_new.state like CONCAT('%',#{state},'%')
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_activity_new.operator like CONCAT('%',#{operator},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_activity_new.create_date like CONCAT('%',#{createDate},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_activity_new.modify_date like CONCAT('%',#{modifyDate},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into b_activity_new(id,activity_sn,activity_name,start_date,end_date,description,activity_scope,person_limit,activity_limit_state,activity_limit_num,type,state,operator,create_date,modify_date)
+ values(#{id},#{activitySn},#{activityName},#{startDate},#{endDate},#{description},#{activityScope},#{personLimit},#{activityLimitState},#{activityLimitNum},#{type},#{state},#{operator},#{createDate},#{modifyDate})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update b_activity_new set 
+	<trim  suffixOverrides="," >
+	<if test="activitySn != null  ">
+		activity_sn=#{activitySn},
+	</if>
+	<if test="activityName != null  ">
+		activity_name=#{activityName},
+	</if>
+	<if test="startDate != null  ">
+		start_date=#{startDate},
+	</if>
+	<if test="endDate != null  ">
+		end_date=#{endDate},
+	</if>
+	<if test="description != null  ">
+		description=#{description},
+	</if>
+	<if test="activityScope != null  ">
+		activity_scope=#{activityScope},
+	</if>
+	<if test="personLimit != null  ">
+		person_limit=#{personLimit},
+	</if>
+	<if test="activityLimitState != null  ">
+		activity_limit_state=#{activityLimitState},
+	</if>
+	<if test="activityLimitNum != null  ">
+		activity_limit_num=#{activityLimitNum},
+	</if>
+	<if test="type != null  ">
+		type=#{type},
+	</if>
+	<if test="state != null  ">
+		state=#{state},
+	</if>
+	<if test="operator != null  ">
+		operator=#{operator},
+	</if>
+	<if test="createDate != null  ">
+		create_date=#{createDate},
+	</if>
+	<if test="modifyDate != null  ">
+		modify_date=#{modifyDate},
+	</if>
+	</trim> where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete 	 from b_activity_new where id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from b_activity_new where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_activity_new 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from b_activity_new 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_activity_new 
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition} 
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+	
+	<select id="findActivityBySn" resultMap="ResultMap" parameterType="Object">
+		select
+		<include refid="Column_List" />
+		from b_activity_new where activity_sn = #{sn}
+	</select>
+
+</mapper>   

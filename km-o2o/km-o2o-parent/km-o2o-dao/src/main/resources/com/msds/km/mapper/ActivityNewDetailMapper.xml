@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msds.km.mapper.ActivityNewDetailMapper">
+	<!-- Result Map -->
+	<resultMap id="ResultMap" type="com.msds.km.entity.ActivityNewDetailEntity">
+		<result column="id" property="id" />
+		<result column="coupon_sn" property="couponSn" />
+		<result column="coupon_name" property="couponName" />
+		<result column="activity_sn" property="activitySn" />
+		<result column="type" property="type" />
+		<result column="start_date" property="startDate" />
+		<result column="end_date" property="endDate" />
+		<result column="instructions" property="instructions" />
+		<result column="state" property="state" />
+		<result column="operator" property="operator" />
+		<result column="create_date" property="createDate" />
+		<result column="modify_date" property="modifyDate" />
+	</resultMap>
+
+	<!-- b_activity_new_detail 字段 -->
+	<sql id="Column_List">
+		b_activity_new_detail.id,b_activity_new_detail.coupon_sn,b_activity_new_detail.coupon_name,b_activity_new_detail.activity_sn,b_activity_new_detail.type,b_activity_new_detail.start_date,b_activity_new_detail.end_date,b_activity_new_detail.instructions,b_activity_new_detail.state,b_activity_new_detail.operator,b_activity_new_detail.create_date,b_activity_new_detail.modify_date
+	</sql>
+
+	<!-- 查询条件 -->
+	<sql id="Example_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_activity_new_detail.id = #{id}
+			</if>
+			<if test="couponSn != null and couponSn != ''">
+				and b_activity_new_detail.coupon_sn = #{couponSn}
+			</if>
+			<if test="couponName != null and couponName != ''">
+				and b_activity_new_detail.coupon_name = #{couponName}
+			</if>
+			<if test="activitySn != null and activitySn != ''">
+				and b_activity_new_detail.activity_sn = #{activitySn}
+			</if>
+			<if test="type != null and type != ''">
+				and b_activity_new_detail.type = #{type}
+			</if>
+			<if test="startDate != null and startDate != ''">
+				and b_activity_new_detail.start_date = #{startDate}
+			</if>
+			<if test="endDate != null and endDate != ''">
+				and b_activity_new_detail.end_date = #{endDate}
+			</if>
+			<if test="instructions != null and instructions != ''">
+				and b_activity_new_detail.instructions = #{instructions}
+			</if>
+			<if test="state != null and state != ''">
+				and b_activity_new_detail.state = #{state}
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_activity_new_detail.operator = #{operator}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_activity_new_detail.create_date = #{createDate}
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_activity_new_detail.modify_date = #{modifyDate}
+			</if>
+		</trim>
+	</sql>
+	
+		<!-- like查询条件 -->
+	<sql id="Like_Where_Clause">
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and b_activity_new_detail.id = #{id}
+			</if>
+			<if test="couponSn != null and couponSn != ''">
+				and b_activity_new_detail.coupon_sn like CONCAT('%',#{couponSn},'%')
+			</if>
+			<if test="couponName != null and couponName != ''">
+				and b_activity_new_detail.coupon_name like CONCAT('%',#{couponName},'%')
+			</if>
+			<if test="activitySn != null and activitySn != ''">
+				and b_activity_new_detail.activity_sn like CONCAT('%',#{activitySn},'%')
+			</if>
+			<if test="type != null and type != ''">
+				and b_activity_new_detail.type like CONCAT('%',#{type},'%')
+			</if>
+			<if test="startDate != null and startDate != ''">
+				and b_activity_new_detail.start_date like CONCAT('%',#{startDate},'%')
+			</if>
+			<if test="endDate != null and endDate != ''">
+				and b_activity_new_detail.end_date like CONCAT('%',#{endDate},'%')
+			</if>
+			<if test="instructions != null and instructions != ''">
+				and b_activity_new_detail.instructions like CONCAT('%',#{instructions},'%')
+			</if>
+			<if test="state != null and state != ''">
+				and b_activity_new_detail.state like CONCAT('%',#{state},'%')
+			</if>
+			<if test="operator != null and operator != ''">
+				and b_activity_new_detail.operator like CONCAT('%',#{operator},'%')
+			</if>
+			<if test="createDate != null and createDate != ''">
+				and b_activity_new_detail.create_date like CONCAT('%',#{createDate},'%')
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				and b_activity_new_detail.modify_date like CONCAT('%',#{modifyDate},'%')
+			</if>
+		</trim>
+	</sql>
+
+	<!-- 插入记录 -->
+	<insert id="add" parameterType="Object">
+		<selectKey resultType="java.lang.Integer" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
+		insert into b_activity_new_detail(id,coupon_sn,coupon_name,activity_sn,type,start_date,end_date,instructions,state,operator,create_date,modify_date)
+ values(#{id},#{couponSn},#{couponName},#{activitySn},#{type},#{startDate},#{endDate},#{instructions},#{state},#{operator},#{createDate},#{modifyDate})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="Object">
+		update b_activity_new_detail set 
+	<trim  suffixOverrides="," >
+	<if test="couponSn != null  ">
+		coupon_sn=#{couponSn},
+	</if>
+	<if test="couponName != null  ">
+		coupon_name=#{couponName},
+	</if>
+	<if test="activitySn != null  ">
+		activity_sn=#{activitySn},
+	</if>
+	<if test="type != null  ">
+		type=#{type},
+	</if>
+	<if test="startDate != null  ">
+		start_date=#{startDate},
+	</if>
+	<if test="endDate != null  ">
+		end_date=#{endDate},
+	</if>
+	<if test="instructions != null  ">
+		instructions=#{instructions},
+	</if>
+	<if test="state != null  ">
+		state=#{state},
+	</if>
+	<if test="operator != null  ">
+		operator=#{operator},
+	</if>
+	<if test="createDate != null  ">
+		create_date=#{createDate},
+	</if>
+	<if test="modifyDate != null  ">
+		modify_date=#{modifyDate},
+	</if>
+	</trim> where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="Object">
+		delete from b_activity_new_detail where id = #{id}
+	</delete>
+	
+	<!-- 删除记录 -->
+	<delete id="deleteByActivitySn" parameterType="Object">
+		delete from b_activity_new_detail where activity_sn = #{activitySn}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="findById" resultMap="ResultMap" parameterType="Object">
+		select <include refid="Column_List" /> 
+	 from b_activity_new_detail where id = #{id}
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findListByCondition" resultMap="ResultMap"
+		parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_activity_new_detail 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 列表总数 -->
+	<select id="queryByCount" resultType="java.lang.Integer"
+		parameterType="Object">
+		select count(1) from b_activity_new_detail 
+		<include refid="Example_Where_Clause" />
+	</select>
+
+	<!-- 查询分页列表 -->
+	<select id="queryByList" resultMap="ResultMap" parameterType="Object">
+		select 
+		<include refid="Column_List" />
+		from b_activity_new_detail 
+		<include refid="Example_Where_Clause" />
+		<if test="pager.orderCondition != null and pager.orderCondition != ''">
+			${pager.orderCondition} 
+		</if>
+		<if test="pager.queryCondition != null and pager.queryCondition != ''">
+			${pager.queryCondition}
+		</if>
+	</select>
+
+</mapper>   
